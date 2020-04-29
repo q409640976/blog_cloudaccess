@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="IE=edge"><title>The road to Kubernetes – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://liming.imfast.io/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="friendly-lite-google-opensans-css" href="http://fonts.googleapis.com/css?family=Open+Sans%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C700%2C700i%2C800%2C800i&ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="friendly-lite-google-raleway-css" href="https://fonts.googleapis.com/css?family=Raleway%3A100%2C100i%2C200%2C200i%2C300%2C300i%2C400%2C400i%2C500%2C500i%2C600%2C600i%2C700%2C700i%2C800%2C800i%2C900%2C900i&ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="friendly-lite-google-ubuntu-mono-css" href="https://fonts.googleapis.com/css?family=Ubuntu+Mono%3A400%2C400i%2C700%2C700i&ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="font-awesome-css" href="https://liming.imfast.io/wp-content/themes/friendly-lite//assets/css/font-awesome.min.css" type="text/css" media="all"><link rel="stylesheet" id="bootstrap-css" href="https://liming.imfast.io/wp-content/themes/friendly-lite//assets/css/bootstrap.min.css" type="text/css" media="all"><link rel="stylesheet" id="friendly-lite-style-css" href="https://liming.imfast.io/wp-content/themes/friendly-lite//style.css" type="text/css" media="all"><script type="text/javascript" src="https://liming.imfast.io/wp-includes/js/jquery/jquery.js"></script><script type="text/javascript" src="https://liming.imfast.io/wp-includes/js/jquery/jquery-migrate.min.js"></script><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><style type="text/css" id="friendly-lite-customizer-style">
+				.hero-img-off .site-branding,
+				.hero-img-off .site-description,
+				.hero-img-off .site-title,
+				.hero-img-off .site-title a,
+				.hero-img-off .site-title a:hover,
+				.hero-img-off .site-title a:focus {
+					color: #0b448b				}
+		</style></head><body class="post-template-default single single-post postid-23 single-format-standard singular-post">
+
+	
+			<div class="pre-loader"></div>
+	
+	<a href="#content" class="skip-link screen-reader-text">Skip To Content</a>
+	<div id="page-wrapper" class="hfeed site">
+		
+		<header id="masthead" class="site-header hero-img-off" role="banner"><section class="header-top"><div id="topbar-wrapper" class="collapse in">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 topbar-left">
+					<ul class="contact-links"></ul></div>
+									<div class="col-md-4 topbar-right">	
+						<ul class="header-social-icons"></ul></div>
+							</div>
+		</div>
+
+	</div>
+	<a href="#topbar-wrapper" data-toggle="collapse" id="toggle-topbar" class="topbar-toggle-btn" aria-expanded="false" aria-label="Toggle Top Bar">
+		<i class="fa fa-angle-up" aria-hidden="true" title="Toggle Top Bar"></i>
+	</a>
+</section><section class="custom-header"><div class="custom-header-media">
+			</div>
+	
+	<div class="site-branding">
+											<div class="site-logo"></div>	
+						<div class="site-info">
+																<p class="site-title">
+								<a href="https://liming.imfast.io/" rel="home">fast ok</a>
+							</p>
+																			<p class="site-description">one month</p>
+							</div>
+			</div>
+</section></header><section class="breadcrumb-wrapper"><div class="container">
+			<ol class="breadcrumb"><li class="breadcrumb-item"><a href="https://liming.imfast.io">Home</a></li><li class="breadcrumb-item"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a></li><li class="breadcrumb-item active">The road to Kubernetes</li></ol></div></section><div id="content" class="site-content">
+<div class="container">
+	<div class="row">
+		<div id="primary" class="col-md-9 content-area">
+			<main id="main" class="site-main" role="main"><article id="post-23" class="post-23 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">The road to Kubernetes</h1><div class="entry-meta"><span class="byline"><i class="fa fa-user-circle" aria-hidden="true"></i><span class="screen-reader-text">Posted By: </span><span class="author vcard"><a class="url fn n" href="https://liming.imfast.io/author/apvffqbd">admin</a></span></span><span class="posted-on"><i class="fa fa-calendar" aria-hidden="true"></i><span class="screen-reader-text">Posted On: </span><a href="https://liming.imfast.io/23.html" rel="bookmark"><time class="entry-date updated" datetime="2020-04-29T19:12:24+08:00">2020-04-29</time></a></span></div>	</header><div class="entry-content">
+		<div>
+<p>I finally wanted to setup my own <a href="https://kubernetes.io/">kubernetes cluster</a> as everyone I talk to, said its the hottest shit.</p>
+<p>I’m using three VMs, hosted at <a href="https://netcup.de/">Netcup</a> running the latest Debian 9 Stretch build. I’ve installed most basic tools for me and also already set up docker using this amazing <a href="https://github.com/nickjj/ansible-docker">ansible role</a>. <strong>Make sure to disable any swap you have configured – kubelet will not start otherwise.</strong></p>
+<p>The <a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/">documentation</a> on how to install things is pretty good, but I’ve missed some details, that I banged my head on, so I will copy most snippets over for future reference. Keep in mind, that this might have already changed and is no longer working at the time you read this.</p>
+<p>First install all needed CLI tools on each of the three hosts:</p>
+<pre class="prettyprint">apt-get update && apt-get install -y apt-transport-https
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+cat <<EOF >/etc/apt/sources.list.d/kubernetes.list
+deb http://apt.kubernetes.io/ kubernetes-xenial main
+EOF
+apt-get update
+apt-get install -y kubelet kubeadm kubectl</pre>
+<p>Start the systemd Service for kubelet, our kubernetes manager – also on every node.</p>
+<pre class="prettyprint">systemctl enable kubelet && systemctl start kubelet</pre>
+<p>Now the docs are a bit unspecific, but here’s a command to set the correct cgroup on Debian 9.</p>
+<p> </p>
+<p>First check what cgroup docker is running under:</p>
+<pre class="prettyprint">docker info | grep -i cgroup</pre>
+<p>Then use this replacement command to add the cgroup to the systemd service file and restart kubelet:</p>
+<pre class="prettyprint">sed -i "s/bin/kubelet/bin/kubelet --cgroup-driver=cgroupfs/g" /lib/systemd/system/kubelet.service
+systemctl daemon-reload
+systemctl restart kubelet</pre>
+<p> </p>
+<p>Verify everything is working with:</p>
+<pre class="prettyprint">systemctl status kubelet</pre>
+<p><img class="aligncenter wp-image-903 size-full" src="https://bruck.me/wp-content/uploads/2018/04/Screenshot-from-2018-04-06-23-28-56.png" alt="" width="863" height="209" srcset="https://bruck.me/wp-content/uploads/2018/04/Screenshot-from-2018-04-06-23-28-56.png 863w,https://bruck.me/wp-content/uploads/2018/04/Screenshot-from-2018-04-06-23-28-56-300x73.png 300w,https://bruck.me/wp-content/uploads/2018/04/Screenshot-from-2018-04-06-23-28-56-768x186.png 768w" sizes="(max-width: 863px) 100vw, 863px"></p>
+<p>If you see a failed state, you can use <em>journalctl -xe</em> to check for the error message. (You did disable your swap right? ;] – Hint <em>swapoff -a</em>)</p>
+<p>Now we should be ready to setup our master node.</p>
+<pre class="prettyprint">kubeadm init</pre>
+<p>If anything goes wrong, you can reset your master node using the following:</p>
+<pre class="prettyprint">kubeadm reset</pre>
+<p>At this point init took me all the way and got stuck on the following message:</p>
+<pre class="prettyprint">[init] This might take a minute or longer if the control plane images have to be pulled.
+</pre>
+<p>In my logs (journalctl) I could see some message related to docker, cni and Network problems. A quick google search lated lead <a href="https://github.com/kubernetes/kubeadm/issues/228#issuecomment-362499210">me to this quickfix</a>:</p>
+<pre class="prettyprint">#domain bestsrv.de
+#search bestsrv.de
+nameserver 46.38.225.230
+nameserver 46.38.252.230</pre>
+<p>Comment out the <em>domain</em> and <em>search</em> part in that file.</p>
+<p>Then I got the following message:</p>
+<pre class="prettyprint">"server4" is forbidden: not yet ready to handle request</pre>
+<p>Turns out, I had a service listening on port 80/443/8080 – make sure to stop that before you run <em>init</em>.</p>
+<p>After that we need to install a pod network, that will allow our pods to talk to each other. By default kubernetes only bundles rudimentary networking but to fully utilize all feature, we will use weave:</p>
+<pre class="prettyprint">export kubever=$(kubectl version | base64 | tr -d 'n')
+kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"</pre>
+<p>To enable the master to run pods, run the following command:</p>
+<pre class="prettyprint">kubectl taint nodes --all node-role.kubernetes.io/master-</pre>
+<p>Then run the following command on your two other servers:</p>
+<pre class="prettyprint">kubeadm join --token <token> <master-ip>:<master-port> --discovery-token-ca-cert-hash sha256:<hash></pre>
+<p>To finish up, we will copy the kube config file to our local machine in order to administer the cluster locally.</p>
+<pre class="prettyprint">mkdir -p $HOME/.kube
+scp server4.wdkk.de:/etc/kubernetes/admin.conf .kube/config
+chown $(id -u):$(id -g) $HOME/.kube/config</pre>
+<p>Now we have a ready to go cluster and start using it.</p>
+<p>I’ll post some basic commands in the next days.</p>
+</div>
+	</div>
+	<footer class="entry-footer"><span class="cat-links"><i class="fa fa-folder-open" aria-hidden="true"></i><span class="screen-reader-text">Categories: </span><a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>	</footer></article><nav class="navigation post-navigation" role="navigation" aria-label="Continue Reading"><h2 class="screen-reader-text">Continue Reading</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://liming.imfast.io/22.html" rel="prev"><span class="screen-reader-text">Previous Post</span><span aria-hidden="true" class="nav-subtitle">Previous</span> <span class="nav-title">Termina(l)te your way in style</span></a></div><div class="nav-next"><a href="https://liming.imfast.io/25.html" rel="next"><span class="screen-reader-text">Next Post</span><span aria-hidden="true" class="nav-subtitle">Next</span><span class="nav-title">Kubernetes: get service account secret for dashboard login</span></a></div></div>
+	</nav>Comments are closed.<p class="no-comment"></p>			</main></div>
+		<div id="secondary" class="col-md-3 primary-sidebar" role="complementary">
+	<div class="widget-wrapper">
+		<div id="search-2" class="widget widget_search">
+<form role="search" method="get" class="search-form" action="https://liming.imfast.io/">
+	<label for="search-input-5ea983797ff75">
+		<span class="screen-reader-text">
+			Search for:		</span>
+	</label>
+	<input type="text" id="search-input-5ea983797ff75" class="form-control" placeholder="Search …" value="" name="s"><button type="submit" class="btn btn-search">
+		<i class="fa fa-search" aria-hidden="true"></i>
+		<span class="screen-reader-text">
+			Search		</span>
+	</button>
+</form>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widget-title">Recent Posts</h2>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+									</li>
+					</ul></div><div id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widget-title">Recent Comments</h2><ul id="recentcomments"></ul></div><div id="archives-2" class="widget widget_archive"><h2 class="widget-title">Archives</h2>		<ul><li><a href="https://liming.imfast.io/date/2020/04">April 2020</a></li>
+		</ul></div><div id="categories-2" class="widget widget_categories"><h2 class="widget-title">Categories</h2>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a>
+</li>
+		</ul></div><div id="meta-2" class="widget widget_meta"><h2 class="widget-title">Meta</h2>			<ul><li><a href="https://liming.imfast.io/wp-login.php">Log in</a></li>
+			<li><a href="https://liming.imfast.io/feed">Entries feed</a></li>
+			<li><a href="https://liming.imfast.io/comments/feed">Comments feed</a></li>
+			<li><a href="https://wordpress.org/">WordPress.org</a></li>			</ul></div>	</div>
+</div>
+	</div>
+</div>
+	</div>
+
+	<footer id="colophon" class="site-footer"><div class="footer-widgets">
+			<div class="container">
+				<div class="row">
+						<div class="col-md-4  widget-wrapper">
+			</div>
+	<div class="col-md-4  widget-wrapper">
+				<div class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+									</li>
+					</ul></div>	</div>
+	<div class="col-md-4  widget-wrapper">
+		<div class="widget widget_recent_comments"><h2 class="widgettitle">Recent Comments</h2><ul id="recentcomments--1"></ul></div>	</div>
+				</div>	
+			</div> 
+		</div> 
+		<div class="footer-social-copyright">	
+			<div class="container">
+				<div class="row">
+						<div class="social-icons col-lg-6 col-md-6 col-sm-12 text-left">
+		<ul class="list-inline footer-social-icons"></ul></div>
+<div class="site-copyright col-lg-6 col-md-6 col-sm-12 text-right">
+	Copyright © 2020<span class="sep"> | </span>
+<a href="https://wordpress.org/">
+	Proudly powered by WordPress</a>
+</div>
+				</div>	
+			</div> 
+		</div>	
+	</footer></div>
+
+
+ 
+		<button type="button" id="scroll-up" class="btn-scroll-up">
+			<span class="screen-reader-text">Scroll up to top</span>
+		</button> 
+
+
+<script type="text/javascript" src="https://liming.imfast.io/wp-content/themes/friendly-lite//assets/js/bootstrap.min.js"></script><script type="text/javascript" src="https://liming.imfast.io/wp-content/themes/friendly-lite//assets/js/skip-link-focus-fix.js"></script><script type="text/javascript">
+/* <![CDATA[ */
+var friendly_lite_js_obj = {"site_preloader":"1","back_to_top":"1"};
+/* ]]> */
+</script><script type="text/javascript" src="https://liming.imfast.io/wp-content/themes/friendly-lite//assets/js/friendly-lite.js"></script></body></html>
