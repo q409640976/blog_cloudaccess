@@ -1,31 +1,39 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ZSH shortcut: quickly commit using a function – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="bluegray-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/bluegray/style.css?ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="bluegray-googlefonts-css" href="//fonts.googleapis.com/css?family=Open+Sans&ver=5.4" type="text/css" media="all"><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/bluegray/js/nav.js?ver=5.4"></script><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style></head><body class="post-template-default single single-post postid-24 single-format-standard">
-
-<div id="container">
-	<div id="header-first">
-		<div class="logo">
-							<h1><a href="https://liming.imfast.io/" title="fast ok">fast ok</a></h1>
-									<div class="site-tagline">one month</div>
-									</div>
-	</div>
-
-	<div id="header-second">
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ZSH shortcut: quickly commit using a function – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4" type="text/css" media="all"><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style></head><body class="post-template-default single single-post postid-24 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
 		
-			</div>
-
-	<div id="main-content">
-		<div id="content">
-	
-		<div id="post-24" class="post-single post-24 post type-post status-publish format-standard hentry category-uncategorized">
-			<h1 class="post-title-single entry-title">ZSH shortcut: quickly commit using a function</h1>
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
 
 			
-<div class="postmetadata">
-	Posted on <a href="https://liming.imfast.io/24.html"><time class="updated" datetime="2020-04-29T19:12:24+08:00">2020-04-29</time></a> | 
-	By <span class="author vcard"><a class="url fn" href="https://liming.imfast.io/author/apvffqbd">admin</a></span>	</div>
-
-			<div class="entry-content">
-				<div>
+				
+	<article id="post-24" class="post-24 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">ZSH shortcut: quickly commit using a function</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/24.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
 <p>I have many private git repos to manage all the configuration files, ansible playbooks, source code and other stuff you would want to version. Most of them are just for me to view and often I want to quickly ‘save’ my current process by creating a commit I can go back to.</p>
 <p>I just recently switched to zsh after years of using bash – never had I thought that my life would change that much. So many neat little things that are really helpful and make my life easier. Themes, plugins and the oh so amazing <a href="https://github.com/robbyrussell/oh-my-zsh">oh-my-zsh</a> really make it a pleasure to do stuff on the console. (I always have to bite my tongue once I SSH into a server that only has <em>sh</em> or <em>bash</em> now.</p>
 <p>So in order to commit quicker without having to write two to three commands like <em>add</em>, <em>commit</em> & <em>push</em> one can create a function that does all that and takes some arguments in case you need them. During my research, as any scientist should do properly before reinventing the wheel, I <a href="https://stackoverflow.com/a/48247234/409460">found Hasan</a> has thought of the same thing a couple years back. Here is my version of it:</p>
@@ -41,25 +49,27 @@
 </pre>
 <p>Enjoy!</p>
 </div>
-
-							</div>
-
-			
-<div class="postmetadata">
-	Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a>			</div>
-		</div>
-
+											</div>
 		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/22.html" rel="prev"><span class="meta-nav">←</span> Termina(l)te your way in style</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/25.html" rel="next">Kubernetes: get service account secret for dashboard login <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
 
-<div id="comments">
 	
+	
+	
+</div>
+			
+		</div>
 	</div>
 
-	
-	</div>
 
-	<div id="sidebar">
-				<div id="recent-posts-4" class="widget widget_recent_entries">		<h3 class="widgettitle">近期文章</h3>		<ul><li>
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
 					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
 									</li>
 											<li>
@@ -74,17 +84,65 @@
 											<li>
 					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
 									</li>
-					</ul></div><div id="categories-4" class="widget widget_categories"><h3 class="widgettitle">分类目录</h3>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a>
+					</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a></li>
+		</ul></aside><aside id="categories-2" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a>
 </li>
-		</ul></div>	</div>
+		</ul></aside><aside id="meta-2" class="widget widget_meta"><p class="widget-title">功能</p>			<ul><li><a href="https://liming.imfast.io/wp-login.php">登录</a></li>
+			<li><a href="https://liming.imfast.io/feed">项目feed</a></li>
+			<li><a href="https://liming.imfast.io/comments/feed">评论feed</a></li>
+			<li><a href="https://cn.wordpress.org/">WordPress.org</a></li>			</ul></aside><aside id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="https://liming.imfast.io/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s"><input type="submit" id="searchsubmit" value="搜索"></div>
+			</form></aside><aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+									</li>
+					</ul></aside><aside id="recent-comments-2" class="widget widget_recent_comments"><p class="widget-title">近期评论</p><ul id="recentcomments"></ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a></li>
+		</ul></aside><aside id="categories-2" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a>
+</li>
+		</ul></aside><aside id="meta-2" class="widget widget_meta"><p class="widget-title">功能</p>			<ul><li><a href="https://liming.imfast.io/wp-login.php">登录</a></li>
+			<li><a href="https://liming.imfast.io/feed">项目feed</a></li>
+			<li><a href="https://liming.imfast.io/comments/feed">评论feed</a></li>
+			<li><a href="https://cn.wordpress.org/">WordPress.org</a></li>			</ul></aside><aside id="recent-posts-4" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+									</li>
+					</ul></aside><aside id="categories-4" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a>
+</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
 
-</div>
-<div id="footer">
-	
-	<div class="site-info">
-		Copyright 2020  <a href="https://liming.imfast.io/" title="fast ok">fast ok</a>
-	</div>
-</div>
-</div>
-
-</body></html>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
