@@ -1,0 +1,3 @@
+.validcheck:before {content: "✔";color: green;font-size: 40px;}
+.renewcheck:before {content: "⚠";color: red;font-size: 30px;}
+.warningcheck:before {content: "⚠";color: orange;font-size: 30px;}
