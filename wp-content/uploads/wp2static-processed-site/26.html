@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Kubernetes: proxy requests without additional pods – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-26 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-26" class="post-26 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Kubernetes: proxy requests without additional pods</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/26.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<p>Sometimes you need to provide a legacy access to various downloads or proxy some requests to a different endpoint, that might not be running in your cluster. One can natively redirect such requests with having to add additional deployments / containers to your Kubernetes cluster.</p>
+<p>There is a special type of Kubernete’s service object that simply points any traffic to that external DNS name. This <a href="https://github.com/kubernetes/website/issues/5822">isn’t really document</a> all too well but eventually you will find enough issues and pointers to frankenstein a solution together. For anybody else looking on how to do this correctly, here is run down with nginx-ingress-controller:0.19.0 that worked for me.</p>
+<p>First we create a normal ingress object, that allows us to terminate the SSL and look into the path of the HTTP request and decide if this is a request that is relevant to be proxied. </p>
+<pre class="wp-block-code"><code lang="yaml" class="language-yaml">apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: "<your-bucket-namespace>"
+    nginx.ingress.kubernetes.io/secure-backends: "true"
+  name: artifacts
+spec:
+  rules:
+    - host: downloads.example.com
+      http:
+        paths:
+          - path: "/artifacts/"
+            backend:
+              serviceName: proxy-artifacts
+              servicePort: 443
+  tls:
+  - secretName: tls
+    hosts:
+    - downloads.example.com</code></pre>
+<p>Lets quickly take a look at what is going on here. We first configure our Ingress Controller to use <em>nginx</em> and enable automatic provisioning via our cluster ACME/cert-manager.</p>
+<p>Then we instruct nginx to rewrite the target URL to add the bucket. This way, we can swap buckets without the user facing URL having to change. (Notice to not include leading or trailing slashes)</p>
+<p>Lastly we tell nginx, that the backend it should be expecting also is using TLS.</p>
+<p>The rest of the ingress object is pretty standard. Define the hostname, the path and point it towards our service, that we will take a look at next.</p>
+<pre class="wp-block-code"><code lang="yaml" class="language-yaml">apiVersion: v1
+kind: Service
+spec:
+  externalName: storage.googleapis.com
+  type: ExternalName
+metadata:
+  name: proxy-artifacts</code></pre>
+<p>The service object is pretty standard. Notice that we don’t have to specify the port explicitly with this special kind of service. The externalName property simply is the hostname of what external system you want to talk to.</p>
+<p>Deploy those two configurations and you should be all set. Once you have all the quirks figured out, this is actually really simple and saves you from operating any additional reverse proxies in- or outside your cluster. </p>
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/24.html" rel="prev"><span class="meta-nav">←</span> ZSH shortcut: quickly commit using a function</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/27.html" rel="next">Chase your Dreams <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
