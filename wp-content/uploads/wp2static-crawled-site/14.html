@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Cloudflare 动态域名解析设置全过程，及二级域名ID的获取 – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-14 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-14" class="post-14 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Cloudflare 动态域名解析设置全过程，及二级域名ID的获取</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-25</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/14.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<p>Cloudflare 动态域名解析设置全过程，及二级域名ID的获取。首先，Dnspod的动态域名设置很简单，反过来说，也是因为功能有限，所以才简单。</p>
+<pre>#获取domain_id
+curl -X POST https://dnsapi.cn/Domain.Info  -d 'login_token=13834,fe01aa05aded8ada9c3e984fb6144cd7&format=json&domain=uselys.cn'
+
+#获取record_id
+curl -X POST https://dnsapi.cn/Record.List -d 'login_token=13834,fe01aa05aded8ada9c3e984fb6144cd7&format=json&domain=uselys.cn'
+
+#提交域名更新。每小时限5次。
+curl -s -X POST https://dnsapi.cn/Record.Ddns -d 'login_token=13834,fe01aa05aded8ada9c3e984fb6144cd7&format=json&domain=uselys.cn&record_id=184261226&record_line=默认&sub_domain=home'</pre>
+<p>就这么三步，燃鹅国产dns的问题，大家也都心知肚明。还有那些花生壳之类的，真要用在生产环境下要多纠结有多纠结，跑起来晃悠悠的，死起来直挺挺的。</p>
+<p>所以Cloudflare动态域名解析才是我们真正需要的。用的人不多的主要原因，可能是在获取二级域名的id的麻烦上，确实很难受。</p>
+<blockquote>
+<p> https://api.cloudflare.com/</p>
+<p>Cloudflare API手册，是必备工具，里面详细写明了几乎所有功能的用法。不过要理解的话，必须照着手册去试错。</p>
+</blockquote>
+<h2>设置教程</h2>
+<p>1. 主机里必须安装 curl, 这是跟API通讯的基本工具。</p>
+<p>2. 获取域名的Zone ID、账号Email、API Keys(我直接使用Global API Key)。</p>
+<p>3. 获取二级域名的ID号，这是最眼花缭乱的一步，很多朋友大概就止步于此。 首先要先设置一个二级域名，比如home.uselys.cn ，IP地址随便填，记住这个 home。 </p>
+<figure data-trix-attachment='{"contentType":"image/jpg","contenteditable":false,"height":90,"url":"https://static.wangdalao.com/wp-content/uploads/2020/04/191aec537b57f7_1_post.jpg","width":1035}' data-trix-content-type="image/jpg" data-trix-attributes='{"presentation":"gallery"}' class="attachment attachment--preview"><img src="https://static.wangdalao.com/wp-content/uploads/2020/04/191aec537b57f7_1_post.jpg" width="1035" height="90"></figure><p>然后获取home的ID号：</p>
+<pre>https://api.cloudflare.com/#dns-records-for-a-zone-list-dns-records</pre>
+<p>上面是说明书的具体章节。然后是命令样本：</p>
+<pre>curl -X GET "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records?type=A&name=example.com&content=127.0.0.1&page=1&per_page=20&order=type&direction=desc&match=all"<ol><li>
+
+</li><li>     -H "X-Auth-Email: user@example.com"</li><li>
+
+</li><li>     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" </li><li>     -H "Content-Type: application/json"</li></ol></pre>
+<p>我一开始总是把 Zone Details 和 List DNS Records 搞错，实际上是 List DNS Records。</p>
+<pre>/zones/023e105f4ecef8ad9ca31a8372d0c353</pre>
+<p>这一段 /zones/ 后面的字符串改成 域名的ID号</p>
+<pre>/dns_records?type=A&name=example.com&content=127.0.0.1&page=1&per_page=20&order=type&direction=desc&match=all" </pre>
+<p>这一段只需要保留问号前面的内容，问号后面都是参数，实际上我们用不着。</p>
+<p>结果就是这样：</p>
+<pre>curl -X GET<ol><li>"https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records"</li></ol></pre>
+<p>X-Auth-Email 和 X-Auth-Key 改成自己的实际参数就好了。 最终，命令是这样的：</p>
+<pre>curl -X GET "https://api.cloudflare.com/client/v4/zones/cc837e5e8b25acc36fab40fdf98dcaf9/dns_records"     -H "X-Auth-Email: service@uselys.cn"  -H "X-Auth-Key: a79efe70d7bcdc3rd4763676f3437e412f002" -H "Content-Type: application/json" </pre>
+<p>记得把发斜杠去掉，做成一个一行命令，然后在命令行执行，结果如下：</p>
+<pre>{"result":[{"id":"a3365e7fa46ec326cf8ca153e6d7fe5c","type":"A","name":"home.uselys.cn","content":"111.111.111.111","proxiable":true,"proxied":false,"ttl":1,"locked":false<ol><li>......</li></ol></pre>
+<p>home.uselys.cn 前面的id值 a3365e7fa46ec326cf8ca153e6d7fe5c 就是二级域名 home 的id。 到此，参数配齐了！</p>
+<p>4. 获取本机IP</p>
+<pre>curl -s http://whatismyip.akamai.com</pre>
+<p>获取本机IP的方式有很多种，这种比较直观把。 </p>
+<p>5. 更新 home 的IP，说明书具体章节：</p>
+<pre>https://api.cloudflare.com/#dns-records-for-a-zone-update-dns-record</pre>
+<p>章节名称是：Update DNS Record</p>
+<p>命令样本：</p>
+<pre>curl -X PUT "https://api.cloudflare.com/client/v4/zones/023e105f4ecef8ad9ca31a8372d0c353/dns_records/372e67954025e0ba6aaa6d586b9e0b59" 
+     -H "X-Auth-Email: user@example.com" 
+
+     -H "X-Auth-Key: c2547eb745079dac9320b638f5e225cf483cc5cfdda41" 
+
+     -H "Content-Type: application/json" 
+     --data '{"type":"A","name":"example.com","content":"127.0.0.1","ttl":120,"proxied":false}'</pre>
+<p>这时候，所有的参数我们都已经知道，把对应的参数都修改成自己的实际参数即可。然后把 content 的值换成 222.222.222.222 试试看。如果成功了，这一步就算完成了。</p>
+<p>6. 把获取IP、更改IP连个步骤组合成一个sh脚本：</p>
+<pre>API_URL=$(/usr/local/bin/curl -s http://whatismyip.akamai.com)
+/usr/local/bin/curl -s -X PUT "https://api.cloudflare.com/client/v4/zones/cc837e5e8b25acc36fab40fdf98dcaf9/dns_records/a3365e7fa46ec326cf8ca153e6d7fe5c" 
+     -H "X-Auth-Email: service@uselys.cn" 
+     -H "X-Auth-Key: a79efe70d7bcdc3rd4763676f3437e412f002" 
+     -H "Content-Type: application/json" 
+     --data "{"type":"A","name":"source","content":"$API_URL","ttl":300,"proxied":false}" 
+     > /dev/null</pre>
+<p>注意，content 的参数换成了 变量 $API_URL。 保存为 cf.sh，并给它赋予执行权限。 如此一来，每执行一次，home.uselys.cn 的IP就更新一次。</p>
+<p>7. 最后一步，把 cf.sh 放到 crontab 里面，按照你设想的时间频率运行即可。</p>
+<p>本文转自 @ <a href="https://www.uselys.cn/thread-25-1-1.html">南汇网络</a> </p>
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/13.html" rel="prev"><span class="meta-nav">←</span> 桔子VPS美国洛杉矶三网CN2 GIA 1核1G 50M带宽低至5折47元/月 附速度及综合性能测评</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/15.html" rel="next">幕布四周年活动，最少4个月高级版会员~ <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
