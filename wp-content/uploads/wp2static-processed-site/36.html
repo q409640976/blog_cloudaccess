@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AWS Web and MariaDB on EC2 in terraform modules – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-36 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-36" class="post-36 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">AWS Web and MariaDB on EC2 in terraform modules</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/36.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<p>This is an example of a terraform template and modukles to create the network infrastructure and nodes for a public facing Web server accessing an EC2 MySQL database in a private subnet.</p>
+<p>The main point of this exercise was to convert the previous example using just one template into one using numerous modules.</p>
+<p>The cost of this infrastructure is measured in single dollars</p>
+<p>The “.txt” files listed may need to be converted using either an editor or “dos2unix” if the newline format is incorrect.</p>
+<p>e.g. using vi enter</p>
+<p>“s/VM//g”</p>
+<h4>KEYS</h4>
+<p>Add the entry</p>
+<p>key_name = “devopsdba2″</p>
+<p>to your secrets file “SECRET_variables.auto.tfvars”</p>
+<h2>GIT</h2>
+<p>All the following operations have been completed on a Centos VM.</p>
+<p>If the following git repository hasn’t been download already then execute the following:</p>
+<pre class="wp-block-preformatted">$ cd ~/git  
+$ git clone https://github.com/paulhhallam/AWS-Web-and-EC2-MySQL-db-in-terraform-modules.git
+$cd AWS-Web-and-EC2-MySQL-db-in-terraform-modules</pre>
+<h2>Terraform</h2>
+<p>The files in this terraform configuration are :</p>
+<pre class="wp-block-preformatted">DB<br>DNA-AND-DHCP<br>EC2<br>ROUTING<br>SECURITYG<br>SUBNETS<br>VPC<br>DevMain.tf     Template controller<br>MYoutputs.tf   List of outputs<br>MYvars.tf      Defines lots of variables <br>TOPoutputs.tf  List of outputs<br>TOPvars.tf     Defines lots of variables <br>database.txt   Instructions to install and set up the mysql database<br>secret.tf      Secret variables<br>secrets.tf     Secret variables<br>webphpapp.txt  Instructions to install and set up the web server </pre>
+<h2>Issues</h2>
+<p>Any issues can be investigated by checking the log files on the instances at /var/log e.g.</p>
+<ul><li>/var/log/cloud-init.log</li>
+<li>/var/log/yum.log</li>
+</ul><h2>Note</h2>
+<p>For simplicity I have hardcoded certain values but these can obviously be changed to secrets, environment variables or entered on the terraform command lines.</p>
+<p>The MariaDB user and password is hardcoded in database.txt</p>
+<p>If you use these scripts please remember to change these values.</p>
+<h2>Terraform</h2>
+<p>The terraform commands to run the scripts are:</p>
+<pre class="wp-block-code"><code>terraform init   -var-file="<location and name of your secrets file>.auto.tfvars"
+terraform apply  -var-file="<location and name of your secrets file>.auto.tfvars"
+terraform delete -var-file="<location and name of your secrets file>.auto.tfvars"</code></pre>
+<p>where the contents of the file .auto.tfvars is similar to the following: MySecretKeys.auto.tfvars</p>
+<ul><li>access_key = “<your AWS access key”</li>
+<li>secret_key = “<your AWS secret key name>”</li>
+<li>key_name = “<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">EC2 key pair</a> resource name></li>
+</ul><h2>Test</h2>
+<p>Please note that due to the OS updates and installations involved the availability of the web server and database may actually take over 10 minutes after the terraform script has completed.</p>
+<p>Once created the infrastructure can be tested by accessing the web pages:</p>
+<pre class="wp-block-code"><code>http://<Public DNS of the EC2 instance phpapp>/
+This will present the Apache HTTP Server Test Page
+
+http://<Public DNS of the EC2 instance phpapp>/mydb2.php
+This will present the PHP info page for the phpapp EC2 instance
+
+http://<Public DNS of the EC2 instance phpapp>/mydb.php
+This will present the result of a query against the Mariadb database on the second EC2 instance.
+Please be patient as it can take over 5 minutes for the yum update, patching and database setup to complete before the page is available.
+
+The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
+<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png" alt="" class="wp-image-438" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png 549w,http://devops.isitdevops.com/wp-content/uploads/2019/01/web1-300x268.png 300w" sizes="(max-width: 549px) 100vw, 549px"></figure><figure class="wp-block-image"><img src="http://2.gravatar.com/avatar/8a1327cdafc0f7010f87aa1864663969?s=49&d=mm&r=g" alt=""></figure><p>Author<a href="http://localhost:8081/testsite/author/admin/">admin</a>Posted on<a href="http://localhost:8081/testsite/aws-web-and-ec2-mysql-mariadb-in-one-terraform-template/">January 3, 2019</a>Categories<a href="http://localhost:8081/testsite/category/aws/">AWS</a>, <a href="http://localhost:8081/testsite/category/mysql-mariadb/">MySQL/MariaDB</a>Tags<a href="http://localhost:8081/testsite/tag/aws-ec2-mysql/">aws ec2 mysql</a>, <a href="http://localhost:8081/testsite/tag/mariadb/">mariadb</a><a href="http://localhost:8081/testsite/wp-admin/post.php?post=406&action=edit">Edit</a></p>
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/33.html" rel="prev"><span class="meta-nav">←</span> Connect to private EC2 via public EC2</a></span>
+					<span class="nav-next"></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html" aria-current="page">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
