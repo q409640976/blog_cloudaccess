@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Create an AWS key pair – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-30 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-30" class="post-30 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Create an AWS key pair</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/30.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<h4>Key pairs</h4>
+<p>We are setting up a key pair as the next few examples use secure shell (ssh) access to configure the database and web server.</p>
+<p>For </p>
+<ul><li>US East N Virginia we will use the name devopsdba1</li>
+<li>US East Ohio we will use the name devopsdba2</li>
+</ul><p>The AWS documentation for key pairs is located at:</p>
+<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html</a></p>
+<p>and</p>
+<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">Creating a Key Pair Using Amazon EC2</a>.</p>
+<p>Go to EC2 -> Key Pairs</p>
+<div class="wp-block-image">
+<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1024x568.png" alt="" class="wp-image-408" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1024x568.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-300x166.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-768x426.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1200x666.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1.png 1476w" sizes="(max-width: 1024px) 100vw, 1024px"></figure></div>
+<p>Select “Create Key Pair” and enter “devopsdba” as the name</p>
+<div class="wp-block-image">
+<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1024x422.png" alt="" class="wp-image-409" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1024x422.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-300x124.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-768x317.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1200x495.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2.png 1247w" sizes="(max-width: 1024px) 100vw, 1024px"></figure></div>
+<p>Select “Create” and then save the file devopsdba.pem</p>
+<div class="wp-block-image">
+<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1024x465.png" alt="" class="wp-image-410" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1024x465.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-300x136.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-768x349.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1200x545.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px"></figure></div>
+<p>The devopsdba.pem file will contain a host of random characters e.g.</p>
+<pre class="wp-block-preformatted">-----BEGIN RSA PRIVATE KEY-----<br> MIIEowIBAAKCAQEAh+iHFd44fkGUD0ZcogzryU7gJ5FX8IBFrEuLz2v3e5/BXdj+SMmScxl8Iwen<br> aw7IlvM2Ri9UkTG77ewogIArj4+LobbbCCMpCR/KGigCSKZEths2dSkrCAHqtnwXkJ2G/VTtICzC<br>:<br>:<br>:<br>ERFLJd2bQHYxuhfxLLoa4tdtg5cLArLTQO2QT74IuG/1AoGBAIyO90DBx1gPz2HfwPZhO9vlY0qo<br> Gsc1ZUCDoHZzIlWUBhv3B0NvPCv9ecxWE3IVgBTcOWI+/zn49uaHkeIK1GxBIJ79iIph0KbMMZeb<br> TOafwR5fzuUa9/2+9ECCml3AIi06Nd7EDbPHLcjujaiccxenhvjRdpPwRs3OSo1x1U5n<br> -----END RSA PRIVATE KEY-----</pre>
+<p>This file should be saved as this will need to be used if you wish to connect to the instances. </p>
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/29.html" rel="prev"><span class="meta-nav">←</span> Operating your own mail server is a pain</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/34.html" rel="next">Using Terraform to create a Mariadb Web <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
