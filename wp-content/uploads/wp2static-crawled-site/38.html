@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WordPress web converted to flat file S3 – Part 1 – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-38 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-38" class="post-38 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">WordPress web converted to flat file S3 – Part 1</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/38.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<p>These are the instructions I used to convert this WordPress web using MySQL to flat files on AWS S3</p>
+<p>You will need:</p>
+<div class="wp-block-group">
+<div class="wp-block-group__inner-container">
+<ul><li>An AWS account</li>
+<li>A website</li>
+<li>Xampp</li>
+</ul></div>
+</div>
+<p>Generate the static website files.</p>
+<pre class="wp-block-verse">As this is a WordPress site I used Xampp on my laptop to store the website files and database.<br>I Loaded the plugin WP2Static onto the site.<br>I set the Settings/Permalinks value to "Numeric"<br><br>n.b. I'm not sure why this was needed but its one step I had to take to get the static website working<br><br>To export the static website I then went to the WP2Static tab and entered the followin<br><img class="wp-image-489" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png 1611w,http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-300x155.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1024x528.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-768x396.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1536x792.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1200x619.png 1200w" sizes="(max-width: 1611px) 100vw, 1611px"></pre>
+<p>Create the S3 bucket</p>
+<pre class="wp-block-verse">Create the S3 bucket for your website, in this case isitdevops.com<br>Ensure the bucket policy allows all access.<br><img class="wp-image-491" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png 2560w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-300x88.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1024x300.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-768x225.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1536x450.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-2048x600.png 2048w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1200x352.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
+<p>Upload the website files</p>
+<pre class="wp-block-verse">Move into the bucket and select Upload<br><img class="wp-image-493" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png 1972w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-300x108.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1024x367.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-768x275.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1536x551.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1200x430.png 1200w" sizes="(max-width: 1972px) 100vw, 1972px"><br>Drag/Drop the files, select Next, Select Grant Public Read Access and then Upload. <br><img class="wp-image-494" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png 2560w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-300x178.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1024x607.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-768x455.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1536x910.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-2048x1213.png 2048w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1200x711.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-495" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png 2560w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-300x180.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1024x614.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-768x461.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1536x922.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-2048x1229.png 2048w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1200x720.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-496" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png 2560w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-300x176.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1024x600.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-768x450.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1536x900.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-2048x1200.png 2048w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1200x703.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-497" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png 2560w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-300x179.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1024x610.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-768x458.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1536x916.png 1536w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-2048x1221.png 2048w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1200x715.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
+<p>Kick off the website</p>
+<pre class="wp-block-verse">Go to the bucket properties page and select the "Static Website Hosting"tab. <br><img class="wp-image-492" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-3-e1575454919117.png" alt=""><br><img class="wp-image-498" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png 1246w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-267x300.png 267w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-911x1024.png 911w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-768x864.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-1200x1349.png 1200w" sizes="(max-width: 1246px) 100vw, 1246px"><br>Enter index.html as the index document<br>Save the endpoint displayed in the popup.<br>Select Save.<br>Test the website using the endpointas the web address.</pre>
+
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/33.html" rel="prev"><span class="meta-nav">←</span> Connect to private EC2 via public EC2</a></span>
+					<span class="nav-next"></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html" aria-current="page">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
