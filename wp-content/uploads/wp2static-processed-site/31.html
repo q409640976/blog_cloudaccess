@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Create SSH keys for putty – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-31 single-format-standard custom-font-enabled single-author">
+<div id="page" class="site">
+	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
+			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+						</div>
+		
+		
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
+			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-31" class="post-31 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Create SSH keys for putty</h1>
+									
+		<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+        <span class="meta-sep">|</span> 
+				
+				<span class="date updated">2020-04-29</span>
+				 
+        </div>
+		<div class="adt-comment">
+		<a class="link-comments" href="https://liming.imfast.io/31.html#respond">0 Comment</a> 
+        </div>       
+		</div>
+			
+						
+		</header><div class="entry-content">
+												<div>
+<p>If issues are experienced with the EC2 instances we will need to connect and investigate. </p>
+<p>We will use putty to connect to the EC2 instance.</p>
+<p>First set up the private key</p>
+<p>Run Puttygen.exe</p>
+<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1024x882.png" alt="" class="wp-image-414" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1024x882.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-300x258.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-768x661.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1200x1033.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select “Load”</figcaption></figure><figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1024x725.png" alt="" class="wp-image-415" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1024x725.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-300x212.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-768x544.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1200x850.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2.png 1675w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Using “All Files (*.*)” select the downloaded AWS private key “devopsdba2.pem” and then “Open”
+</figcaption></figure><figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1024x894.png" alt="" class="wp-image-421" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1024x894.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-300x262.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-768x670.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1200x1047.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select “Save public key”</figcaption></figure><figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1024x721.png" alt="" class="wp-image-422" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1024x721.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-300x211.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-768x541.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1200x845.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4.png 1667w" sizes="(max-width: 1024px) 100vw, 1024px"></figure><p>Save the key as devopsdba2.pem</p>
+<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1024x894.png" alt="" class="wp-image-423" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1024x894.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-300x262.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-768x670.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1200x1047.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select “Save private key”</figcaption></figure><figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1024x730.png" alt="" class="wp-image-424" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1024x730.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-300x214.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-768x547.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1200x855.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5.png 1674w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Save devopsdba2.ppk</figcaption></figure><figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1024x894.png" alt="" class="wp-image-425" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1024x894.png 1024w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-300x262.png 300w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-768x670.png 768w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1200x1047.png 1200w,http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Exit</figcaption></figure><p></p>
+</div>
+											</div>
+		
+	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
+								<span></span>
+			
+           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/29.html" rel="prev"><span class="meta-nav">←</span> Operating your own mail server is a pain</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/34.html" rel="next">Using Terraform to create a Mariadb Web <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/37.html">A wordpress site on S3 as flat files</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/36.html">AWS Web and MariaDB on EC2 in terraform modules</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/35.html">AWS Web and MariaDB on EC2 in one terraform template</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+	<footer id="colophon" role="contentinfo"><div class="site-info">
+		<div class="footercopy">custom footer text left</div>
+		<div class="footercredit">custom footer text right</div>
+		<div class="clear"></div>
+		</div>
+		</footer><div class="site-wordpress">
+				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				</div>
+				<div class="clear"></div>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
