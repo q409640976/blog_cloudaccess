@@ -20,115 +20,6 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.4.1</generator>
 	<item>
-		<title>A wordpress site on S3 as flat files</title>
-		<link>https://liming.imfast.io/37.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/37.html</guid>
-
-					<description><![CDATA[]]></description>
-										<content:encoded><![CDATA[]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>WordPress web converted to flat file S3 – Part 1</title>
-		<link>https://liming.imfast.io/38.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/38.html</guid>
-
-					<description><![CDATA[These are the instructions I used to convert this WordP… <span class="read-more"><a href="https://liming.imfast.io/38.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>These are the instructions I used to convert this WordPress web using MySQL to flat files on AWS S3</p>
-<p>You will need:</p>
-<div class="wp-block-group">
-<div class="wp-block-group__inner-container">
-<ul>
-<li>An AWS account</li>
-<li>A website</li>
-<li>Xampp</li>
-</ul>
-</div>
-</div>
-<p>Generate the static website files.</p>
-<pre class="wp-block-verse">As this is a WordPress site I used Xampp on my laptop to store the website files and database.<br>I Loaded the plugin WP2Static onto the site.<br>I set the Settings/Permalinks value to "Numeric"<br><br>n.b. I'm not sure why this was needed but its one step I had to take to get the static website working<br><br>To export the static website I then went to the WP2Static tab and entered the followin<br><img class="wp-image-489" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png 1611w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-300x155.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1024x528.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-768x396.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1536x792.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1200x619.png 1200w" sizes="(max-width: 1611px) 100vw, 1611px"></pre>
-<p>Create the S3 bucket</p>
-<pre class="wp-block-verse">Create the S3 bucket for your website, in this case isitdevops.com<br>Ensure the bucket policy allows all access.<br><img class="wp-image-491" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-300x88.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1024x300.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-768x225.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1536x450.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-2048x600.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1200x352.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
-<p>Upload the website files</p>
-<pre class="wp-block-verse">Move into the bucket and select Upload<br><img class="wp-image-493" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png 1972w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-300x108.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1024x367.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-768x275.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1536x551.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1200x430.png 1200w" sizes="(max-width: 1972px) 100vw, 1972px"><br>Drag/Drop the files, select Next, Select Grant Public Read Access and then Upload. <br><img class="wp-image-494" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-300x178.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1024x607.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-768x455.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1536x910.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-2048x1213.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1200x711.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-495" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-300x180.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1024x614.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-768x461.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1536x922.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-2048x1229.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1200x720.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-496" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-300x176.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1024x600.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-768x450.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1536x900.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-2048x1200.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1200x703.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-497" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-300x179.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1024x610.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-768x458.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1536x916.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-2048x1221.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1200x715.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
-<p>Kick off the website</p>
-<pre class="wp-block-verse">Go to the bucket properties page and select the "Static Website Hosting"tab. <br><img class="wp-image-492" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-3-e1575454919117.png" alt=""><br><img class="wp-image-498" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png 1246w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-267x300.png 267w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-911x1024.png 911w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-768x864.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-1200x1349.png 1200w" sizes="(max-width: 1246px) 100vw, 1246px"><br>Enter index.html as the index document<br>Save the endpoint displayed in the popup.<br>Select Save.<br>Test the website using the endpointas the web address.</pre>
-</p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>WordPress web converted to flat file S3 – Part 2</title>
-		<link>https://liming.imfast.io/39.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/39.html</guid>
-
-					<description><![CDATA[We now have the website uploaded and working using an S… <span class="read-more"><a href="https://liming.imfast.io/39.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>We now have the website uploaded and working using an S3 bucket link, lets now add the DNS to AWS</p>
-<p>I registered the DNS name isitdevops.com using the AWS Route53 menus. This automatically creates the hosted zone for &ldquo;isitdevops.com&rdquo;</p>
-<p>Using the AWS documentation create the Route53 DNS entry.</p>
-<p><a href="https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html">https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html</a> </p>
-<pre class="wp-block-verse">Register a domain at the AWS Route53 console.</pre>
-<pre class="wp-block-verse">In the Route53 console:<br>Choose Hosted Zones. In the list of hosted zones, choose the name of the hosted zone that matches your domain name. <br><br>Choose <strong>Create Record Set<br></strong></pre>
-<pre class="wp-block-verse">Specify the following values:<br><strong>Name</strong> Accept the default value, which is the name of your hosted zone and your domain.<br>For the root domain, you do not need to enter any additional information in the <strong>Name</strong> field.<br><strong>Type</strong>, Choose <strong>A &ndash; IPv4 address</strong>.                                                                                                                                                                                                                  <strong>Alias</strong>, Choose <strong>Yes</strong>.                                                                                                                                                                                                                  <strong>Alias Target</strong> In the <strong>S3 website endpoints</strong> section of the list, choose the same bucket name that appears in the <strong>Name</strong> field, for example <code><em><code class="">example</code></em>.com (s3-website-us-west-2)</code>.                                                                                                                                                                                                                                                       <strong>Routing Policy</strong> Accept the default value of <strong>Simple</strong>.<br><strong>Evaluate Target Health </strong>Accept the default value of <strong>No</strong>.<br>The screenshot below shows the alias record for the root domain,                                <code>isitdevops.com</code>: <br></pre>
-<div class="wp-block-image">
-<figure class="aligncenter size-large is-resized"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-10.2-3-1024x618.png" alt="" class="wp-image-534" width="503" height="304" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-10.2-3-1024x618.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-10.2-3-300x181.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-10.2-3-768x464.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-10.2-3.png 1168w" sizes="(max-width: 503px) 100vw, 503px"></figure>
-</div>
-<p>Choose <strong>Create</strong>.   </p>
-<p>The website is now available as isitdevops.com    </p>
-<h2>Create a subdomain</h2>
-<p>i.e. create a website under the domain isitdevops.com, e.g. test.isitdevops.com</p>
-<p>This website will actually be stored as a seperate S3 bucket.</p>
-<p>First you will need to create an S3 bucket, e.g. &ldquo;test.isitdevops.com&rdquo;, set this up as a hosted website and upload the website files. Test the website works by using the Endpoint created when you setup the static website. All this is identical to the process we have follwed in part 1.</p>
-<ul>
-<li>Create the S3 bucket test.isitdevops.com</li>
-<li>Ensure the bucket has public read access.</li>
-<li>Upload an index.html to the bucket ensuring public read access.</li>
-<li>Selecting Properties tab in the bucket set the bucket as a static web hosting bucket; note the Endpoint displayed in the popup.</li>
-<li>Test the Endpoint to ensure the website is working</li>
-</ul>
-<p>In Route53 create a new hosted zone, &ldquo;test.isitdevops.com&rdquo;</p>
-<div class="wp-block-image">
-<figure class="aligncenter size-large"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-1024x280.png" alt="" class="wp-image-529" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-1024x280.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-300x82.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-768x210.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-1536x421.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-2048x561.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW1-4-1200x329.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
-</div>
-<p> In the test.isitdevops.com <strong>Hosted Zone</strong> page,  note the NS record set created </p>
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-scaled.png" alt="" class="wp-image-527" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-300x83.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-1024x284.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-768x213.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-1536x425.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-2048x567.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW2-2-1200x332.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></figure>
-</div>
-<p>In the test.isitdevops.com <strong>Hosted Zone page</strong>, select &ldquo;Create Record Set&rdquo; and create an alias record set for the S3 bucket.</p>
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-scaled.png" alt="" class="wp-image-528" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-300x112.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-1024x383.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-768x287.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-1536x574.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-2048x765.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW4-2-1200x448.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></figure>
-</div>
-<p>After selecting the <strong>isitdevops.com</strong> Hosted Zone on the <strong>Hosted Zones page</strong> select &ldquo;Create Record Set&rdquo; and enter the &ldquo;test&rdquo; name and the NS record values from above.</p>
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-scaled.png" alt="" class="wp-image-530" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-300x110.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-1024x375.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-768x281.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-1536x563.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-2048x750.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/NW5-2-1200x440.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></figure>
-</div>
-<p>Wait up to 15 minutes and the web page &ldquo;test.isitdevops.com&rdquo; should be available.</p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
 		<title>Using Terraform to create a Mariadb Web</title>
 		<link>https://liming.imfast.io/34.html</link>
 		
@@ -291,129 +182,51 @@ The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
 		
 			</item>
 		<item>
-		<title>Create an AWS key pair</title>
-		<link>https://liming.imfast.io/30.html</link>
+		<title>A wordpress site on S3 as flat files</title>
+		<link>https://liming.imfast.io/37.html</link>
 		
 		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:28 +0000</pubDate>
+		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
 				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/30.html</guid>
+		<guid isPermaLink="false">https://liming.imfast.io/37.html</guid>
 
-					<description><![CDATA[Key pairs We are setting up a key pair as the next few … <span class="read-more"><a href="https://liming.imfast.io/30.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[]]></description>
+										<content:encoded><![CDATA[]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
+		<title>WordPress web converted to flat file S3 – Part 1</title>
+		<link>https://liming.imfast.io/38.html</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
+				<category><![CDATA[默认分类]]></category>
+		<guid isPermaLink="false">https://liming.imfast.io/38.html</guid>
+
+					<description><![CDATA[These are the instructions I used to convert this WordP… <span class="read-more"><a href="https://liming.imfast.io/38.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
-<h4>Key pairs</h4>
-<p>We are setting up a key pair as the next few examples use secure shell (ssh) access to configure the database and web server.</p>
-<p>For </p>
+<p>These are the instructions I used to convert this WordPress web using MySQL to flat files on AWS S3</p>
+<p>You will need:</p>
+<div class="wp-block-group">
+<div class="wp-block-group__inner-container">
 <ul>
-<li>US East N Virginia we will use the name devopsdba1</li>
-<li>US East Ohio we will use the name devopsdba2</li>
+<li>An AWS account</li>
+<li>A website</li>
+<li>Xampp</li>
 </ul>
-<p>The AWS documentation for key pairs is located at:</p>
-<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html</a></p>
-<p>and</p>
-<p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#having-ec2-create-your-key-pair">Creating a Key Pair Using Amazon EC2</a>.</p>
-<p><!--EndFragment-->Go to EC2 -&gt; Key Pairs</p>
-<div class="wp-block-image">
-<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1024x568.png" alt="" class="wp-image-408" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1024x568.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-300x166.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-768x426.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1-1200x666.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys1.png 1476w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
 </div>
-<p>Select &ldquo;Create Key Pair&rdquo; and enter &ldquo;devopsdba&rdquo; as the name</p>
-<div class="wp-block-image">
-<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1024x422.png" alt="" class="wp-image-409" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1024x422.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-300x124.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-768x317.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2-1200x495.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys2.png 1247w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
 </div>
-<p>Select &ldquo;Create&rdquo; and then save the file devopsdba.pem</p>
-<div class="wp-block-image">
-<figure class="aligncenter"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1024x465.png" alt="" class="wp-image-410" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1024x465.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-300x136.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-768x349.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/Keys3-1200x545.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
-</div>
-<p>The devopsdba.pem file will contain a host of random characters e.g.</p>
-<pre class="wp-block-preformatted">-----BEGIN RSA PRIVATE KEY-----<br> MIIEowIBAAKCAQEAh+iHFd44fkGUD0ZcogzryU7gJ5FX8IBFrEuLz2v3e5/BXdj+SMmScxl8Iwen<br> aw7IlvM2Ri9UkTG77ewogIArj4+LobbbCCMpCR/KGigCSKZEths2dSkrCAHqtnwXkJ2G/VTtICzC<br>:<br>:<br>:<br>ERFLJd2bQHYxuhfxLLoa4tdtg5cLArLTQO2QT74IuG/1AoGBAIyO90DBx1gPz2HfwPZhO9vlY0qo<br> Gsc1ZUCDoHZzIlWUBhv3B0NvPCv9ecxWE3IVgBTcOWI+/zn49uaHkeIK1GxBIJ79iIph0KbMMZeb<br> TOafwR5fzuUa9/2+9ECCml3AIi06Nd7EDbPHLcjujaiccxenhvjRdpPwRs3OSo1x1U5n<br> -----END RSA PRIVATE KEY-----</pre>
-<p>This file should be saved as this will need to be used if you wish to connect to the instances. </p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Create SSH keys for putty</title>
-		<link>https://liming.imfast.io/31.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:28 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/31.html</guid>
-
-					<description><![CDATA[If issues are experienced with the EC2 instances we wil… <span class="read-more"><a href="https://liming.imfast.io/31.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>If issues are experienced with the EC2 instances we will need to connect and investigate. </p>
-<p>We will use putty to connect to the EC2 instance.</p>
-<p>First set up the private key</p>
-<p>Run Puttygen.exe</p>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1024x882.png" alt="" class="wp-image-414" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1024x882.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-300x258.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-768x661.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1-1200x1033.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty1.png 1280w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select &ldquo;Load&rdquo;</figcaption></figure>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1024x725.png" alt="" class="wp-image-415" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1024x725.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-300x212.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-768x544.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2-1200x850.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty2.png 1675w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Using &ldquo;All Files (*.*)&rdquo; select the downloaded AWS private key &ldquo;devopsdba2.pem&rdquo; and then &ldquo;Open&rdquo;</p>
-</figcaption></figure>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1024x894.png" alt="" class="wp-image-421" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1024x894.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-300x262.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-768x670.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1-1200x1047.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-1.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select &ldquo;Save public key&rdquo;</figcaption></figure>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1024x721.png" alt="" class="wp-image-422" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1024x721.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-300x211.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-768x541.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4-1200x845.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty4.png 1667w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
-<p>Save the key as devopsdba2.pem</p>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1024x894.png" alt="" class="wp-image-423" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1024x894.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-300x262.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-768x670.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2-1200x1047.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-2.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Select &ldquo;Save private key&rdquo;</figcaption></figure>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1024x730.png" alt="" class="wp-image-424" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1024x730.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-300x214.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-768x547.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5-1200x855.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty5.png 1674w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Save devopsdba2.ppk</figcaption></figure>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1024x894.png" alt="" class="wp-image-425" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1024x894.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-300x262.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-768x670.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3-1200x1047.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/pty3-3.png 1282w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Exit</figcaption></figure>
-<p></p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Connect to a public EC2 using putty</title>
-		<link>https://liming.imfast.io/32.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:28 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/32.html</guid>
-
-					<description><![CDATA[We will connect to an EC2 instance using putty and the … <span class="read-more"><a href="https://liming.imfast.io/32.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>We will connect to an EC2 instance using putty and the keys generated in the previous post.</p>
-<p>Start Putty</p>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1-1024x888.png" alt="" class="wp-image-428" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1-1024x888.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1-300x260.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1-768x666.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1-1200x1041.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty1.png 1214w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Start putty</figcaption></figure>
-<p>For the host name enter &lt;username&gt;@&lt;hostname or ip&gt;</p>
-<p>e.g. for centos we could use </p>
-<p>centos@ec2-3-16-203-193.us-east-2.compute.amazonaws.com</p>
-<p>and set a name for this session in the &ldquo;Saved Sessions&rdquo; area as &ldquo;AWS-Centos-ohio&rdquo;</p>
-<p>Then expand &ldquo;Connection -&gt; SSH&rdquo; in the left hand column and select &ldquo;Auth&rdquo;</p>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2-1024x898.png" alt="" class="wp-image-429" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2-1024x898.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2-300x263.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2-768x674.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2-1200x1052.png 1200w, http://devops.isitdevops.com/wp-content/uploads/2019/01/cpty2.png 1204w" sizes="(max-width: 1024px) 100vw, 1024px"><figcaption>Enter or browse for the full path and name of the private key generated by Puttygen </figcaption></figure>
-<p> Select &ldquo;session&rdquo; from the left hand column and select &ldquo;save&rdquo; and then &ldquo;load&rdquo;</p>
-<p>You will then connect to the instance.</p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>Connect to private EC2 via public EC2</title>
-		<link>https://liming.imfast.io/33.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:28 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/33.html</guid>
-
-					<description><![CDATA[Connections to a private EC2 instance can be made via a… <span class="read-more"><a href="https://liming.imfast.io/33.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>Connections to a private EC2 instance can be made via a public EC2 instance.</p>
-<p>Having set up putty as in the previous 2 posts we need to load the keys onto the public instance to enable connection to the private instance.</p>
-<p> Connect to the public EC2 instance</p>
-<p>Change directory into &ldquo;.ssh&rdquo; e.g. cd ~/.ssh</p>
-<p>Copy the devopsdba2.pem file to this location.</p>
-<p>e.g.</p>
-<p>Edit the devopsdba2.pem file on your PC using notepad, select All and Copy</p>
-<p>Edit the file on the EC2 instance (vi devopsdba2.pem&rdquo;), paste the contents of your buffer there and then exit. Change the protection on this file to 400 &ldquo;chmod 400 devopsdba2.pem&rdquo;</p>
-<p>Connect to the private instance</p>
-<p>ssh  <br />centos@ip-172-128-3-81.us-east-2.compute.internal -i ~/.ssh/devopsdba2.pem</p>
-<p>Check that the prompt now contains the new hostname.</p>
+<p>Generate the static website files.</p>
+<pre class="wp-block-verse">As this is a WordPress site I used Xampp on my laptop to store the website files and database.<br>I Loaded the plugin WP2Static onto the site.<br>I set the Settings/Permalinks value to "Numeric"<br><br>n.b. I'm not sure why this was needed but its one step I had to take to get the static website working<br><br>To export the static website I then went to the WP2Static tab and entered the followin<br><img class="wp-image-489" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png 1611w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-300x155.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1024x528.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-768x396.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1536x792.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1200x619.png 1200w" sizes="(max-width: 1611px) 100vw, 1611px"></pre>
+<p>Create the S3 bucket</p>
+<pre class="wp-block-verse">Create the S3 bucket for your website, in this case isitdevops.com<br>Ensure the bucket policy allows all access.<br><img class="wp-image-491" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-300x88.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1024x300.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-768x225.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1536x450.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-2048x600.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1200x352.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
+<p>Upload the website files</p>
+<pre class="wp-block-verse">Move into the bucket and select Upload<br><img class="wp-image-493" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png 1972w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-300x108.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1024x367.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-768x275.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1536x551.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1200x430.png 1200w" sizes="(max-width: 1972px) 100vw, 1972px"><br>Drag/Drop the files, select Next, Select Grant Public Read Access and then Upload. <br><img class="wp-image-494" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-300x178.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1024x607.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-768x455.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1536x910.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-2048x1213.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1200x711.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-495" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-300x180.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1024x614.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-768x461.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1536x922.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-2048x1229.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1200x720.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-496" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-300x176.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1024x600.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-768x450.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1536x900.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-2048x1200.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1200x703.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-497" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-300x179.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1024x610.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-768x458.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1536x916.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-2048x1221.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1200x715.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
+<p>Kick off the website</p>
+<pre class="wp-block-verse">Go to the bucket properties page and select the "Static Website Hosting"tab. <br><img class="wp-image-492" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-3-e1575454919117.png" alt=""><br><img class="wp-image-498" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png 1246w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-267x300.png 267w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-911x1024.png 911w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-768x864.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-1200x1349.png 1200w" sizes="(max-width: 1246px) 100vw, 1246px"><br>Enter index.html as the index document<br>Save the endpoint displayed in the popup.<br>Select Save.<br>Test the website using the endpointas the web address.</pre>
+</p>
 </div>
 ]]></content:encoded>
 					
