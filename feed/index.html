@@ -12,7 +12,7 @@
 	<atom:link href="https://liming.imfast.io/feed" rel="self" type="application/rss+xml" />
 	<link>https://liming.imfast.io/</link>
 	<description>one month</description>
-	<lastBuildDate>Wed, 29 Apr 2020 11:12:29 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 01 May 2020 03:44:30 +0000</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,85 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.4.1</generator>
 	<item>
+		<title>Centos 7 快速安装 Cloudflare RailGun 教程</title>
+		<link>https://liming.imfast.io/50.html</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 01 May 2020 03:44:30 +0000</pubDate>
+				<category><![CDATA[默认分类]]></category>
+		<guid isPermaLink="false">https://liming.imfast.io/50.html</guid>
+
+					<description><![CDATA[Railgun &#26159; Cloudflare &#25552;&#20379;&#26381;&#2115… <span class="read-more"><a href="https://liming.imfast.io/50.html">Read More &#187;</a></span>]]></description>
+										<content:encoded><![CDATA[<div>
+<p>Railgun &#26159; Cloudflare &#25552;&#20379;&#26381;&#21153;&#65288;&#20215;&#20540;$200&#32654;&#37329;&#65289;&#65292;&#21487;&#30830;&#20445;&#20197;&#26368;&#24555;&#36895;&#24230;&#36830;&#25509;&#28304;&#31449;&#21644; Cloudflare &#32593;&#32476;&#12290; Railgun &#21033;&#29992;&#31867;&#20284;&#20110;&#39640;&#36136;&#37327;&#35270;&#39057;&#21387;&#32553;&#30340;&#25216;&#26415;&#65292;&#21387;&#32553;&#20197;&#21069;&#26080;&#27861;&#35775;&#38382;&#30340; Web &#23545;&#35937;&#12290;&#36825;&#20250;&#24102;&#26469;&#39069;&#22806;&#30340;&#24615;&#33021;&#25552;&#21319;&#12290;</p>
+<p>Cloudflare Partner <span style="color: #ff0000;">&#65288;&#24050;&#26080;&#27861;&#30003;&#35831;&#65289;</span>&#26159; Cloudflare &#25512;&#20986;&#30340;&#20998;&#38144;&#21512;&#20316;&#35745;&#21010;&#65292;&#30446;&#21069;&#20998;&#20026;&#20004;&#31181;&#65306;Self-Serve Partner&#21644;Enterprise Reseller&#65292;&#20004;&#31181;&#22312;&#21151;&#33021;&#19978;&#23384;&#22312;&#24046;&#21035;&#65292;Enterprise Reseller &#25317;&#26377;&#26356;&#22810;&#30340;&#23450;&#20215;&#26435;&#12289;&#21487;&#36873;&#21151;&#33021;&#20197;&#21450;&#26356;&#22909;&#30340;&#20135;&#21697;&#26381;&#21153;&#12290;&#29616;&#22312;&#22823;&#23478;&#35265;&#21040;&#30340; Cloudflare Partner &#22810;&#25968;&#20026; Self-Serve Partner,&#35201;&#20813;&#36153;&#35797;&#29992;railgun&#39318;&#20808;&#20320;&#38656;&#35201;&#26377;Cloudflare Partner&#36134;&#21495;&#65292;&#25110;&#32773;&#26377;&#31532;&#19977;&#26041;&#25552;&#20379; CFP &#22495;&#21517;&#25509;&#20837;&#24182;&#19988;&#24110;&#20320;&#24320;&#21551; Railgun&#65292;&#21478;&#22806;&#20320;&#30340;vps&#25110;&#32773;&#34394;&#25311;&#20027;&#26426;&#26381;&#21153;&#22120;&#19978;&#20063;&#38656;&#35201;&#23433;&#35013; Railgun &#26381;&#21153;&#12290;</p>
+<p>&#20170;&#22825;&#26089;&#19978;&#25240;&#33150;&#20102;&#19968;&#30058;&#65292;&#32456;&#20110;&#22312; Centos 7 &#19978;&#25104;&#21151;&#23433;&#35013;&#20102;RailGun &#20998;&#20139;&#32473;&#22823;&#23478;&#65292;&#24403;&#28982;&#20102;&#26412;&#25945;&#31243;&#20197; Centos 7 &#20026;&#20363;&#36827;&#34892;&#23433;&#35013; &#65281;</p>
+<h2>&#23433;&#35013;&#25945;&#31243;</h2>
+<p>1&#12289;&#39318;&#20808;&#20197; root &#26435;&#38480;&#30331;&#24405;SSH</p>
+<p>2&#12289;&#22914;&#26524;&#20320;&#24050;&#32463;&#23433;&#35013;&#20102;&#23453;&#22612;&#20043;&#31867;&#30340;&#36719;&#20214;&#65292;&#37027;&#38656;&#35201;&#20808;&#36827;&#23453;&#22612;&#25918;&#34892;2048&#31471;&#21475;&#65288;&#37325;&#28857;&#65306;&#25918;&#34892;2048&#31471;&#21475;&#65289;</p>
+<p>3&#12289;&#36816;&#34892;&#20197;&#19979;&#33050;&#26412;</p>
+<pre>wget&nbsp;https://www.cloudflare.com/static/misc/railgun/centos/railgun-el7.latest.rpm
+rpm&nbsp;-Uvh&nbsp;railgun-el7.latest.rpm
+</pre>
+<p>4&#12289;&#28982;&#21518;&#32534;&#36753;&#21442;&#25968;</p>
+<pre>vi&nbsp;/etc/railgun/railgun.conf</pre>
+<p>&#25289;&#21040;&#26368;&#24213;&#19979;&#65292;&#25913;&#21160;&#36825;&#20004;&#20010;&#21442;&#25968;&#65306;</p>
+<pre>activation.token = CF &#32473;&#20320;&#30340;RAILGUN&#30340;TOKEN
+activation.railgun_host = &#20320;&#30340;&#26381;&#21153;&#22120;IP
+</pre>
+<p><img class="size-full wp-image-3322 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/putty_j9EXUaeKuk.png" alt="" width="662" height="406"></p>
+<p>RAILGUN &#30340; TOKEN &#22312;&#36825;&#36793;&#65306;</p>
+<p><img class="size-full wp-image-3318 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/chrome_Tqe5VAA6UX.png" alt="" width="1016" height="649"></p>
+<p>5&#12289;&#28982;&#21518;&#20445;&#23384;&#65292;&#21551;&#21160; RAILGUN</p>
+<pre>/etc/init.d/railgun start</pre>
+<p>&#23601;&#33021;&#30475;&#21040;&#25104;&#21151;&#25552;&#31034;&#65306;</p>
+<p><img class="size-full wp-image-3327 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/QQ%E6%88%AA%E5%9B%BE20200430111234.png" alt="" width="641" height="114"></p>
+<p>&#21512;&#20316;&#20249;&#20276;&#21518;&#21488;&#21487;&#20197;&#30475;&#21040;&#24320;&#36890;&#25104;&#21151;&#25552;&#31034;&#65306;</p>
+<p><img class="size-full wp-image-3323 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/chrome_YMDS0goISJ.png" alt="" width="991" height="329"></p>
+<p>&nbsp;</p>
+<h2>&#24120;&#35265;&#38169;&#35823;</h2>
+<p><strong>1&#12289;No such file or directory</strong></p>
+<p><img class="size-full wp-image-3319 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/putty_Qb3ptNyrPL.png" alt="" width="662" height="196"></p>
+<p>&#35299;&#20915;&#26041;&#27861;&#65306;&#23433;&#35013; yum &#21363;&#21487;</p>
+<pre>yum install -y wget
+</pre>
+<p><strong>2&#12289;&#21551;&#21160;&#22833;&#36133; &#19968;&#33324;&#37117;&#26159;&#27809;&#26377;&#23433;&#35013; Memcached</strong></p>
+<p>&#23433;&#35013;&#26041;&#27861;&#65306;</p>
+<p>1. &#26597;&#25214; Memcached</p>
+<pre>yum search memcached</pre>
+<p>&#39318;&#20808;&#26816;&#26597; yum &#36719;&#20214;&#20179;&#24211;&#20013;&#26159;&#21542;&#23384;&#22312; memcached&#65292;&#22914;&#26524;&#26377; &#30452;&#25509;&#36827;&#20837;&#31532; 3 &#27493;&#23433;&#35013;&#21363;&#21487;&#65292;&#21542;&#21017;&#25191;&#34892;&#31532; 2 &#27493;&#12290;</p>
+<p>2. &#23433;&#35013;&#31532;&#19977;&#26041;&#36719;&#20214;&#24211;&#65288;&#21487;&#36873;&#65289;</p>
+<p>&#26631;&#20934;&#30340; CentOS5 &#36719;&#20214;&#20179;&#24211;&#37324;&#38754;&#26159;&#27809;&#26377;memcache&#30456;&#24212;&#30340;&#21253;&#30340;,&#25152;&#20197;&#65292;&#25105;&#20204;&#30340;&#31532;&#19968;&#27493;&#23601;&#26159;&#23548;&#20837;&#31532;&#19977;&#26041;&#36719;&#20214;&#20179;&#24211;&#65292;&#36825;&#37324;&#25512;&#33616;&#30340;&#26159; RpmForge&#65288;RpmForge &#24211;&#29616;&#22312;&#24050;&#32463;&#25317;&#26377;&#36229;&#36807;10000&#31181;&#30340; CentOS &#30340;&#36719;&#20214;&#21253;&#65292;&#34987;CentOS&#31038;&#21306;&#35748;&#20026;&#26159;&#26368;&#23433;&#20840;&#20063;&#26159;&#26368;&#31283;&#23450;&#30340;&#19968;&#20010;&#31532;&#19977;&#26041;&#36719;&#20214;&#24211;&#65289;&#65292;&#23433;&#35013;&#26041;&#27861;&#22914;&#19979;&#65306;</p>
+<pre>wget http://dag.wieers.com/rpm/packages/rpmforge-release/rpmforge-release-0.5.2-2.rf.src.rpm
+rpm -ivh rpmforge-release-0.5.2-2.rf.src.rpm
+</pre>
+<p>3. &#23433;&#35013;Memcached</p>
+<pre>yum -y install memcached</pre>
+<p>4. &#39564;&#35777;&#23433;&#35013;</p>
+<pre>memcached -h
+/etc/rc.d/init.d/memcached status
+</pre>
+<p>5. &#26597;&#30475;&#37197;&#32622;&#25991;&#20214;</p>
+<pre>cat /etc/sysconfig/memcached</pre>
+<p>&#21487;&#20197;&#26681;&#25454;&#24773;&#20917;&#20462;&#25913;&#30456;&#20851;&#37197;&#32622;&#21442;&#25968;&#65306;</p>
+<pre>PORT="11211"
+USER="memcached"
+MAXCONN="1024"
+CACHESIZE="64"
+OPTIONS=""
+</pre>
+<p>6. &#21551;&#21160; memcached &#24182;&#19988;&#24320;&#26426;&#33258;&#21160;&#21551;&#21160;</p>
+<pre>systemctl start memcached
+
+systemctl enable memcached
+</pre>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>WordPress web converted to flat file S3 – Part 2</title>
 		<link>https://liming.imfast.io/39.html</link>
 		
@@ -28,7 +107,7 @@
 				<category><![CDATA[默认分类]]></category>
 		<guid isPermaLink="false">https://liming.imfast.io/39.html</guid>
 
-					<description><![CDATA[We now have the website uploaded and working using an S… <span class="read-more"><a href="https://liming.imfast.io/39.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[We now have the website uploaded and working using an S3 b… <span class="read-more"><a href="https://liming.imfast.io/39.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
 <p>We now have the website uploaded and working using an S3 bucket link, lets now add the DNS to AWS</p>
 <p>I registered the DNS name isitdevops.com using the AWS Route53 menus. This automatically creates the hosted zone for &ldquo;isitdevops.com&rdquo;</p>
@@ -85,7 +164,7 @@
 				<category><![CDATA[默认分类]]></category>
 		<guid isPermaLink="false">https://liming.imfast.io/38.html</guid>
 
-					<description><![CDATA[These are the instructions I used to convert this WordP… <span class="read-more"><a href="https://liming.imfast.io/38.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[These are the instructions I used to convert this WordPres… <span class="read-more"><a href="https://liming.imfast.io/38.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
 <p>These are the instructions I used to convert this WordPress web using MySQL to flat files on AWS S3</p>
 <p>You will need:</p>
@@ -137,7 +216,7 @@
 				<category><![CDATA[默认分类]]></category>
 		<guid isPermaLink="false">https://liming.imfast.io/36.html</guid>
 
-					<description><![CDATA[This is an example of a terraform template and modukles… <span class="read-more"><a href="https://liming.imfast.io/36.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[This is an example of a terraform template and modukles to… <span class="read-more"><a href="https://liming.imfast.io/36.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
 <p>This is an example of a terraform template and modukles to create the network infrastructure and nodes for a public facing Web server accessing an EC2 MySQL database in a private subnet.</p>
 <p>The main point of this exercise was to convert the previous example using just one template into one using numerous modules.</p>
@@ -196,79 +275,6 @@ The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
 <figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png" alt="" class="wp-image-438" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png 549w, http://devops.isitdevops.com/wp-content/uploads/2019/01/web1-300x268.png 300w" sizes="(max-width: 549px) 100vw, 549px"></figure>
 <figure class="wp-block-image"><img src="http://2.gravatar.com/avatar/8a1327cdafc0f7010f87aa1864663969?s=49&amp;d=mm&amp;r=g" alt=""></figure>
 <p>Author<a href="http://localhost:8081/testsite/author/admin/">admin</a>Posted on<a href="http://localhost:8081/testsite/aws-web-and-ec2-mysql-mariadb-in-one-terraform-template/">January 3, 2019</a>Categories<a href="http://localhost:8081/testsite/category/aws/">AWS</a>,&nbsp;<a href="http://localhost:8081/testsite/category/mysql-mariadb/">MySQL/MariaDB</a>Tags<a href="http://localhost:8081/testsite/tag/aws-ec2-mysql/">aws ec2 mysql</a>,&nbsp;<a href="http://localhost:8081/testsite/tag/mariadb/">mariadb</a><a href="http://localhost:8081/testsite/wp-admin/post.php?post=406&amp;action=edit">Edit</a></p>
-</div>
-]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>AWS Web and MariaDB on EC2 in one terraform template</title>
-		<link>https://liming.imfast.io/35.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/35.html</guid>
-
-					<description><![CDATA[This is an example of a terraform template to create th… <span class="read-more"><a href="https://liming.imfast.io/35.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>This is an example of a terraform template to create the network<br />
-infrastructure and nodes for a public facing Web server accessing an EC2<br />
- MySQL database in a private subnet.</p>
-<p>The main point of this exercise was to prove the template would work before converting the template to use modules.</p>
-<p>The cost of this infrastructure is measured in single dollars</p>
-<p>The &ldquo;.txt&rdquo; files listed may need to be converted using either an editor or &ldquo;dos2unix&rdquo; if the newline format is incorrect. </p>
-<p>e.g. using vi enter  </p>
-<p>&ldquo;s/VM//g&rdquo;</p>
-<h4>keys</h4>
-<p>Add the entry </p>
-<p>key_name = &ldquo;devopsdba2</p>
-<p>to your secrets file &ldquo;SECRET_variables.auto.tfvars&rdquo;</p>
-<h2>GIT</h2>
-<p>All the following operations have been completed on a Centos VM.</p>
-<p>If the following git repository hasn&rsquo;t been download already then execute the following:</p>
-<pre class="wp-block-preformatted">$ cd ~/git  <br>$ git clone https://github.com/paulhhallam/AWS-Web-and-EC2-MySQL-db-in-one-terraform-template.git<br>$cd AWS-Web-and-EC2-MySQL-db-in-one-terraform-templat</pre>
-<h2>Terraform</h2>
-<p>The files in this terraform configuration are :</p>
-<pre class="wp-block-preformatted">Dev2Main.tf    Main instriuctions<br>output.tf      List of outputs<br>secret.tf      Secret variables<br>vars.tf        Defines lots of variables<br>README.md  <br>database.txt   Instructions to install and set up the mysql database<br>webphpapp.txt  Instructions to install and set up the web server </pre>
-<h2>Issues</h2>
-<p>Any issues can be investigated by checking the log files on the instances at /var/log e.g.</p>
-<ul>
-<li>/var/log/cloud-init.log</li>
-<li>/var/log/yum.log</li>
-</ul>
-<h2>Note</h2>
-<p>For simplicity I have hardcoded certain values but these can obviously be changed to secrets, environment variables or entered on the terraform command lines.</p>
-<p>The MariaDB user and password is hardcoded in Dev2Main.tf</p>
-<p>
-If you use these scripts please remember to change these values.</p>
-<h2>Terraform</h2>
-<p>The terraform commands to run the scripts are:</p>
-<pre class="wp-block-code"><code>terraform init   -var-file="&lt;location and name of your secrets file&gt;.auto.tfvars"
-terraform apply  -var-file="&lt;location and name of your secrets file&gt;.auto.tfvars"
-terraform delete -var-file="&lt;location and name of your secrets file&gt;.auto.tfvars"</code></pre>
-<p>where the contents of the file .auto.tfvars is similar to the following: MySecretKeys.auto.tfvars </p>
-<ul>
-<li>access_key = &ldquo;&lt;your AWS access key&rdquo; </li>
-<li>secret_key = &ldquo;&lt;your AWS secret key name&gt;&rdquo;</li>
-<li>key_name = &ldquo;<a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">EC2 key pair</a> resource name&gt;</li>
-</ul>
-<h2>Test</h2>
-<p>Please note that due to the OS updates and installations involved the availability of the web server and database may actually take over 10 minutes after the terraform script has completed.</p>
-<p>Once created the infrastructure can be tested by accessing the web pages: </p>
-<pre class="wp-block-code"><code>http://&lt;Public DNS of the EC2 instance phpapp&gt;/
-This will present the Apache HTTP Server Test Page
-
-http://&lt;Public DNS of the EC2 instance phpapp&gt;/mydb2.php
-This will present the PHP info page for the phpapp EC2 instance
-
-http://&lt;Public DNS of the EC2 instance phpapp&gt;/mydb.php
-This will present the result of a query against the Mariadb database on the second EC2 instance.
-Please be patient as it can take over 5 minutes for the yum update, patching and database setup to complete before the page is available.
-
-The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
-<figure class="wp-block-image"><img src="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png" alt="" class="wp-image-438" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/01/web1.png 549w, http://devops.isitdevops.com/wp-content/uploads/2019/01/web1-300x268.png 300w" sizes="(max-width: 549px) 100vw, 549px"></figure>
 </div>
 ]]></content:encoded>
 					
