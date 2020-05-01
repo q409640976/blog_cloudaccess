@@ -1,39 +1,96 @@
 <!DOCTYPE html>
-<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Easily add your Github SSH Keys to any Server or Docker Image – fast ok</title><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu%3A400%2C700&subset=latin%2Clatin-ext" type="text/css" media="all"><link rel="stylesheet" id="themonic-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/style.css?ver=1.7.8" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/custom.css?ver=5.4.1" type="text/css" media="all"></head><body class="post-template-default single single-post postid-20 single-format-standard custom-font-enabled single-author">
-<div id="page" class="site">
-	<header id="masthead" class="site-header" role="banner"><div class="io-title-description">
-			<a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>Easily add your Github SSH Keys to any Server or Docker Image | fast ok</title><link rel="stylesheet" type="text/css" media="all" href="https://liming.imfast.io/wp-content/themes/iconic-one-pro/style.css"><style type="text/css">
+
+<!--Theme color-->
+	.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    background: #00A1E0;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu ul {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-bottom: 5px solid #00A1E0;
+    }		
+.themonic-nav li a:hover {
+	background: #00A1E0;
+}
+.themonic-nav li:hover {
+	background: #00A1E0;
+}
+.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    color: ;
+    font-weight: bold;
+}
+.themonic-nav li a:hover {
+	color: ;
+}
+.categories a {
+    background:#00A1E0;
+}
+.read-more a {
+					color: #00A1E0;
+}
+.featured-post {
+    color: #00A1E0;
+}
+#emailsubmit {
+    background: #00A1E0;
+}
+#searchsubmit {
+    background: #00A1E0;
+}
+.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    background: #00A1E0;
+}
+.comments-area article {
+    border-color: #E1E1E1 #E1E1E1 #00A1E0;
+}
+@media screen and (max-width: 767px) {
+.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul, .themonic-nav li {
+    border-bottom: none;
+    }
+}
+		</style><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://liming.imfast.io/wp-includes/css/dist/block-library/style.min.css" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,latin-ext" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://liming.imfast.io/wp-content/themes/iconic-one-pro/custom.css" type="text/css" media="all"><link rel="stylesheet" id="fontawesome-css-css" href="https://liming.imfast.io/wp-content/themes/iconic-one-pro/font/font-awesome.min.css" type="text/css" media="all"><script type="text/javascript" src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/js/respond.min.js"></script></head><body class="post-template-default single single-post postid-20 single-format-standard custom-font-enabled single-author">
+	
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner"><hgroup><a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
 				<br ...><a class="site-description">one month</a>
-						</div>
+		</hgroup><div class="socialmedia">
+							<a href="default_value" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/twitter.png" alt="Follow us on Twitter"></a> 
+											<a href="default_value" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/facebook.png" alt="Follow us on Facebook"></a>
+											<a href="default_value" rel="author" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/gplus.png" alt="Follow us on Google Plus"></a>
+									 <a href="default_value" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/linkedin.png" alt="Linkedin"></a>
+									 <a href="default_value" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/youtube.png" alt="YouTube"></a>
+									<a class="rss" href="default_value" target="_blank"><img src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/img/rss.png" alt="Follow us on rss"></a>			
+					</div>
 		
-		
-		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#main" title="Skip to content">Skip to content</a>
-			<ul id="menu-top" class="nav-menu"><li><a href="https://liming.imfast.io/">首页</a></li></ul></nav><div class="clear"></div>
-	</header><div id="main" class="wrapper">	<div id="primary" class="site-content">
-		<div id="content" role="main">
+		<nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div id="menu-top" class="nav-menu"><ul><li><a href="https://liming.imfast.io/">首页</a></li></ul></div>
+		</nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">
+			<div id="primary" class="site-content">
+				<div id="content" role="main">
 
 			
-				
-	<article id="post-20" class="post-20 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Easily add your Github SSH Keys to any Server or Docker Image</h1>
+					<article id="post-20" class="post-20 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">Easily add your Github SSH Keys to any Server or Docker Image</h1>
 									
-		<div class="below-title-meta">
+	<div class="clear"></div>
+	<div class="below-title-meta">
 		<div class="adt">
 		By        <span class="vcard author">
-			<span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+         <span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
         </span>
-        <span class="meta-sep">|</span> 
-				
-				<span class="date updated">2020-04-29</span>
-				 
-        </div>
-		<div class="adt-comment">
-		<a class="link-comments" href="https://liming.imfast.io/20.html#respond">0 Comment</a> 
-        </div>       
-		</div>
-			
-						
-		</header><div class="entry-content">
-												<div>
+         <span class="meta-sep">|</span> 
+         <span class="date updated">
+			2020-04-29		 </span>		 
+         </div>
+		 <div class="adt-comment">
+		<span><a class="link-comments" href="https://liming.imfast.io/20.html#respond">0 Comment</a></span> 
+         </div>       
+     </div>
+	<div class="clear"></div>		
+						</header><div class="entry-content">
+							<div>
 <p>The default way to copy your ssh key(s) to a remote server is to use the <em><a href="https://www.ssh.com/ssh/copy-id">ssh-copy-id</a> </em>command. This will create a secure connection to the remote server over SSH and then check if the user exists, create the folder&files if needed and add your keys. Works, Easy, Simple.</p>
 <p>My problem is, that often I’m already in the shell and I logged in with some password combination, that I would need to enter a second time to copy my ids. Also I don’t always have all my keys on one machine. As I often get asked by my colleagues, what my SSH keys are, there is a nifty trick you can do, instead of sending them over via E-Mail.</p>
 <p>Github allows to get your public SSH keys with only your username: <em>https://github.com/<username>.keys</em></p>
@@ -43,12 +100,16 @@
 <p>You can always use <em>>></em> instead to append your keys. This can also be used in automated docker builds, where you have a SSH server running inside your container (which you probably shouldn’t ;D).</p>
 <p> </p>
 </div>
-											</div>
-		
-	<footer class="entry-meta"><span>Category: <a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></span>
-								<span></span>
+					</div>
+	
 			
-           						</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
+			<footer class="entry-meta"><div class="categories"><a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></div> <div class="tags"></div> 
+				
+			
+			
+			
+		<div class="clear"></div>
+					</footer></article><nav class="nav-single"><div class="assistive-text">Post navigation</div>
 					<span class="nav-previous"><a href="https://liming.imfast.io/16.html" rel="prev"><span class="meta-nav">←</span> XREA 日本免费虚拟主机及 .shop 免费域名（稳定多年）</a></span>
 					<span class="nav-next"><a href="https://liming.imfast.io/22.html" rel="next">Termina(l)te your way in style <span class="meta-nav">→</span></a></span>
 				</nav><div id="comments" class="comments-area">
@@ -64,6 +125,10 @@
 
 			<div id="secondary" class="widget-area" role="complementary">
 					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/50.html">Centos 7 快速安装 Cloudflare RailGun 教程</a>
+											<span class="post-date">2020-05-01</span>
+									</li>
+											<li>
 					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
 											<span class="post-date">2020-04-29</span>
 									</li>
@@ -87,24 +152,25 @@
 					<a href="https://liming.imfast.io/34.html">Using Terraform to create a Mariadb Web</a>
 											<span class="post-date">2020-04-29</span>
 									</li>
-											<li>
-					<a href="https://liming.imfast.io/33.html">Connect to private EC2 via public EC2</a>
-											<span class="post-date">2020-04-29</span>
-									</li>
-					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (30)
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (31)
 </li>
-		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/05">2020年五月</a> (1)</li>
+	<li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
 		</ul></aside></div>
 		</div>
+			
 	<footer id="colophon" role="contentinfo"><div class="site-info">
 		<div class="footercopy">custom footer text left</div>
 		<div class="footercredit">custom footer text right</div>
 		<div class="clear"></div>
 		</div>
 		</footer><div class="site-wordpress">
-				<a href="http://themonic.com/iconic-one/">Iconic One</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+				        					<a href="http://themonic.com/iconic-one-pro/">Iconic One Pro</a> Theme | Powered by <a href="http://wordpress.org">Wordpress</a>
+					
+									
+				
 				</div>
 				<div class="clear"></div>
-</div>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one/js/selectnav.js?ver=1.0"></script></body></html>
+											
+		</div>
+<script type="text/javascript" src="https://liming.imfast.io/wp-content/themes/iconic-one-pro/js/selectnav.js"></script></body></html>
