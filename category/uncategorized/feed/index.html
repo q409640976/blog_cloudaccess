@@ -12,7 +12,7 @@
 	<atom:link href="https://liming.imfast.io/category/uncategorized/feed" rel="self" type="application/rss+xml" />
 	<link>https://liming.imfast.io/</link>
 	<description>one month</description>
-	<lastBuildDate>Wed, 29 Apr 2020 11:12:29 +0000</lastBuildDate>
+	<lastBuildDate>Fri, 01 May 2020 03:44:30 +0000</lastBuildDate>
 	<language>zh-CN</language>
 	<sy:updatePeriod>
 	hourly	</sy:updatePeriod>
@@ -20,6 +20,85 @@
 	1	</sy:updateFrequency>
 	<generator>https://wordpress.org/?v=5.4.1</generator>
 	<item>
+		<title>Centos 7 快速安装 Cloudflare RailGun 教程</title>
+		<link>https://liming.imfast.io/50.html</link>
+		
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<pubDate>Fri, 01 May 2020 03:44:30 +0000</pubDate>
+				<category><![CDATA[默认分类]]></category>
+		<guid isPermaLink="false">https://liming.imfast.io/50.html</guid>
+
+					<description><![CDATA[Railgun &#26159; Cloudflare &#25552;&#20379;&#26381;&#2115… <span class="read-more"><a href="https://liming.imfast.io/50.html">Read More &#187;</a></span>]]></description>
+										<content:encoded><![CDATA[<div>
+<p>Railgun &#26159; Cloudflare &#25552;&#20379;&#26381;&#21153;&#65288;&#20215;&#20540;$200&#32654;&#37329;&#65289;&#65292;&#21487;&#30830;&#20445;&#20197;&#26368;&#24555;&#36895;&#24230;&#36830;&#25509;&#28304;&#31449;&#21644; Cloudflare &#32593;&#32476;&#12290; Railgun &#21033;&#29992;&#31867;&#20284;&#20110;&#39640;&#36136;&#37327;&#35270;&#39057;&#21387;&#32553;&#30340;&#25216;&#26415;&#65292;&#21387;&#32553;&#20197;&#21069;&#26080;&#27861;&#35775;&#38382;&#30340; Web &#23545;&#35937;&#12290;&#36825;&#20250;&#24102;&#26469;&#39069;&#22806;&#30340;&#24615;&#33021;&#25552;&#21319;&#12290;</p>
+<p>Cloudflare Partner <span style="color: #ff0000;">&#65288;&#24050;&#26080;&#27861;&#30003;&#35831;&#65289;</span>&#26159; Cloudflare &#25512;&#20986;&#30340;&#20998;&#38144;&#21512;&#20316;&#35745;&#21010;&#65292;&#30446;&#21069;&#20998;&#20026;&#20004;&#31181;&#65306;Self-Serve Partner&#21644;Enterprise Reseller&#65292;&#20004;&#31181;&#22312;&#21151;&#33021;&#19978;&#23384;&#22312;&#24046;&#21035;&#65292;Enterprise Reseller &#25317;&#26377;&#26356;&#22810;&#30340;&#23450;&#20215;&#26435;&#12289;&#21487;&#36873;&#21151;&#33021;&#20197;&#21450;&#26356;&#22909;&#30340;&#20135;&#21697;&#26381;&#21153;&#12290;&#29616;&#22312;&#22823;&#23478;&#35265;&#21040;&#30340; Cloudflare Partner &#22810;&#25968;&#20026; Self-Serve Partner,&#35201;&#20813;&#36153;&#35797;&#29992;railgun&#39318;&#20808;&#20320;&#38656;&#35201;&#26377;Cloudflare Partner&#36134;&#21495;&#65292;&#25110;&#32773;&#26377;&#31532;&#19977;&#26041;&#25552;&#20379; CFP &#22495;&#21517;&#25509;&#20837;&#24182;&#19988;&#24110;&#20320;&#24320;&#21551; Railgun&#65292;&#21478;&#22806;&#20320;&#30340;vps&#25110;&#32773;&#34394;&#25311;&#20027;&#26426;&#26381;&#21153;&#22120;&#19978;&#20063;&#38656;&#35201;&#23433;&#35013; Railgun &#26381;&#21153;&#12290;</p>
+<p>&#20170;&#22825;&#26089;&#19978;&#25240;&#33150;&#20102;&#19968;&#30058;&#65292;&#32456;&#20110;&#22312; Centos 7 &#19978;&#25104;&#21151;&#23433;&#35013;&#20102;RailGun &#20998;&#20139;&#32473;&#22823;&#23478;&#65292;&#24403;&#28982;&#20102;&#26412;&#25945;&#31243;&#20197; Centos 7 &#20026;&#20363;&#36827;&#34892;&#23433;&#35013; &#65281;</p>
+<h2>&#23433;&#35013;&#25945;&#31243;</h2>
+<p>1&#12289;&#39318;&#20808;&#20197; root &#26435;&#38480;&#30331;&#24405;SSH</p>
+<p>2&#12289;&#22914;&#26524;&#20320;&#24050;&#32463;&#23433;&#35013;&#20102;&#23453;&#22612;&#20043;&#31867;&#30340;&#36719;&#20214;&#65292;&#37027;&#38656;&#35201;&#20808;&#36827;&#23453;&#22612;&#25918;&#34892;2048&#31471;&#21475;&#65288;&#37325;&#28857;&#65306;&#25918;&#34892;2048&#31471;&#21475;&#65289;</p>
+<p>3&#12289;&#36816;&#34892;&#20197;&#19979;&#33050;&#26412;</p>
+<pre>wget&nbsp;https://www.cloudflare.com/static/misc/railgun/centos/railgun-el7.latest.rpm
+rpm&nbsp;-Uvh&nbsp;railgun-el7.latest.rpm
+</pre>
+<p>4&#12289;&#28982;&#21518;&#32534;&#36753;&#21442;&#25968;</p>
+<pre>vi&nbsp;/etc/railgun/railgun.conf</pre>
+<p>&#25289;&#21040;&#26368;&#24213;&#19979;&#65292;&#25913;&#21160;&#36825;&#20004;&#20010;&#21442;&#25968;&#65306;</p>
+<pre>activation.token = CF &#32473;&#20320;&#30340;RAILGUN&#30340;TOKEN
+activation.railgun_host = &#20320;&#30340;&#26381;&#21153;&#22120;IP
+</pre>
+<p><img class="size-full wp-image-3322 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/putty_j9EXUaeKuk.png" alt="" width="662" height="406"></p>
+<p>RAILGUN &#30340; TOKEN &#22312;&#36825;&#36793;&#65306;</p>
+<p><img class="size-full wp-image-3318 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/chrome_Tqe5VAA6UX.png" alt="" width="1016" height="649"></p>
+<p>5&#12289;&#28982;&#21518;&#20445;&#23384;&#65292;&#21551;&#21160; RAILGUN</p>
+<pre>/etc/init.d/railgun start</pre>
+<p>&#23601;&#33021;&#30475;&#21040;&#25104;&#21151;&#25552;&#31034;&#65306;</p>
+<p><img class="size-full wp-image-3327 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/QQ%E6%88%AA%E5%9B%BE20200430111234.png" alt="" width="641" height="114"></p>
+<p>&#21512;&#20316;&#20249;&#20276;&#21518;&#21488;&#21487;&#20197;&#30475;&#21040;&#24320;&#36890;&#25104;&#21151;&#25552;&#31034;&#65306;</p>
+<p><img class="size-full wp-image-3323 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/chrome_YMDS0goISJ.png" alt="" width="991" height="329"></p>
+<p>&nbsp;</p>
+<h2>&#24120;&#35265;&#38169;&#35823;</h2>
+<p><strong>1&#12289;No such file or directory</strong></p>
+<p><img class="size-full wp-image-3319 aligncenter" src="https://static.wangdalao.com/wp-content/uploads/2020/04/putty_Qb3ptNyrPL.png" alt="" width="662" height="196"></p>
+<p>&#35299;&#20915;&#26041;&#27861;&#65306;&#23433;&#35013; yum &#21363;&#21487;</p>
+<pre>yum install -y wget
+</pre>
+<p><strong>2&#12289;&#21551;&#21160;&#22833;&#36133; &#19968;&#33324;&#37117;&#26159;&#27809;&#26377;&#23433;&#35013; Memcached</strong></p>
+<p>&#23433;&#35013;&#26041;&#27861;&#65306;</p>
+<p>1. &#26597;&#25214; Memcached</p>
+<pre>yum search memcached</pre>
+<p>&#39318;&#20808;&#26816;&#26597; yum &#36719;&#20214;&#20179;&#24211;&#20013;&#26159;&#21542;&#23384;&#22312; memcached&#65292;&#22914;&#26524;&#26377; &#30452;&#25509;&#36827;&#20837;&#31532; 3 &#27493;&#23433;&#35013;&#21363;&#21487;&#65292;&#21542;&#21017;&#25191;&#34892;&#31532; 2 &#27493;&#12290;</p>
+<p>2. &#23433;&#35013;&#31532;&#19977;&#26041;&#36719;&#20214;&#24211;&#65288;&#21487;&#36873;&#65289;</p>
+<p>&#26631;&#20934;&#30340; CentOS5 &#36719;&#20214;&#20179;&#24211;&#37324;&#38754;&#26159;&#27809;&#26377;memcache&#30456;&#24212;&#30340;&#21253;&#30340;,&#25152;&#20197;&#65292;&#25105;&#20204;&#30340;&#31532;&#19968;&#27493;&#23601;&#26159;&#23548;&#20837;&#31532;&#19977;&#26041;&#36719;&#20214;&#20179;&#24211;&#65292;&#36825;&#37324;&#25512;&#33616;&#30340;&#26159; RpmForge&#65288;RpmForge &#24211;&#29616;&#22312;&#24050;&#32463;&#25317;&#26377;&#36229;&#36807;10000&#31181;&#30340; CentOS &#30340;&#36719;&#20214;&#21253;&#65292;&#34987;CentOS&#31038;&#21306;&#35748;&#20026;&#26159;&#26368;&#23433;&#20840;&#20063;&#26159;&#26368;&#31283;&#23450;&#30340;&#19968;&#20010;&#31532;&#19977;&#26041;&#36719;&#20214;&#24211;&#65289;&#65292;&#23433;&#35013;&#26041;&#27861;&#22914;&#19979;&#65306;</p>
+<pre>wget http://dag.wieers.com/rpm/packages/rpmforge-release/rpmforge-release-0.5.2-2.rf.src.rpm
+rpm -ivh rpmforge-release-0.5.2-2.rf.src.rpm
+</pre>
+<p>3. &#23433;&#35013;Memcached</p>
+<pre>yum -y install memcached</pre>
+<p>4. &#39564;&#35777;&#23433;&#35013;</p>
+<pre>memcached -h
+/etc/rc.d/init.d/memcached status
+</pre>
+<p>5. &#26597;&#30475;&#37197;&#32622;&#25991;&#20214;</p>
+<pre>cat /etc/sysconfig/memcached</pre>
+<p>&#21487;&#20197;&#26681;&#25454;&#24773;&#20917;&#20462;&#25913;&#30456;&#20851;&#37197;&#32622;&#21442;&#25968;&#65306;</p>
+<pre>PORT="11211"
+USER="memcached"
+MAXCONN="1024"
+CACHESIZE="64"
+OPTIONS=""
+</pre>
+<p>6. &#21551;&#21160; memcached &#24182;&#19988;&#24320;&#26426;&#33258;&#21160;&#21551;&#21160;</p>
+<pre>systemctl start memcached
+
+systemctl enable memcached
+</pre>
+</div>
+]]></content:encoded>
+					
+		
+		
+			</item>
+		<item>
 		<title>Using Terraform to create a Mariadb Web</title>
 		<link>https://liming.imfast.io/34.html</link>
 		
@@ -43,7 +122,7 @@
 				<category><![CDATA[默认分类]]></category>
 		<guid isPermaLink="false">https://liming.imfast.io/35.html</guid>
 
-					<description><![CDATA[This is an example of a terraform template to create th… <span class="read-more"><a href="https://liming.imfast.io/35.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[This is an example of a terraform template to create the n… <span class="read-more"><a href="https://liming.imfast.io/35.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
 <p>This is an example of a terraform template to create the network<br />
 infrastructure and nodes for a public facing Web server accessing an EC2<br />
@@ -116,7 +195,7 @@ The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
 				<category><![CDATA[默认分类]]></category>
 		<guid isPermaLink="false">https://liming.imfast.io/36.html</guid>
 
-					<description><![CDATA[This is an example of a terraform template and modukles… <span class="read-more"><a href="https://liming.imfast.io/36.html">Read More &#187;</a></span>]]></description>
+					<description><![CDATA[This is an example of a terraform template and modukles to… <span class="read-more"><a href="https://liming.imfast.io/36.html">Read More &#187;</a></span>]]></description>
 										<content:encoded><![CDATA[<div>
 <p>This is an example of a terraform template and modukles to create the network infrastructure and nodes for a public facing Web server accessing an EC2 MySQL database in a private subnet.</p>
 <p>The main point of this exercise was to convert the previous example using just one template into one using numerous modules.</p>
@@ -192,43 +271,6 @@ The page just displays the text "Mycol: MyValues" and nothing else.</code></pre>
 
 					<description><![CDATA[]]></description>
 										<content:encoded><![CDATA[]]></content:encoded>
-					
-		
-		
-			</item>
-		<item>
-		<title>WordPress web converted to flat file S3 – Part 1</title>
-		<link>https://liming.imfast.io/38.html</link>
-		
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<pubDate>Wed, 29 Apr 2020 11:12:29 +0000</pubDate>
-				<category><![CDATA[默认分类]]></category>
-		<guid isPermaLink="false">https://liming.imfast.io/38.html</guid>
-
-					<description><![CDATA[These are the instructions I used to convert this WordP… <span class="read-more"><a href="https://liming.imfast.io/38.html">Read More &#187;</a></span>]]></description>
-										<content:encoded><![CDATA[<div>
-<p>These are the instructions I used to convert this WordPress web using MySQL to flat files on AWS S3</p>
-<p>You will need:</p>
-<div class="wp-block-group">
-<div class="wp-block-group__inner-container">
-<ul>
-<li>An AWS account</li>
-<li>A website</li>
-<li>Xampp</li>
-</ul>
-</div>
-</div>
-<p>Generate the static website files.</p>
-<pre class="wp-block-verse">As this is a WordPress site I used Xampp on my laptop to store the website files and database.<br>I Loaded the plugin WP2Static onto the site.<br>I set the Settings/Permalinks value to "Numeric"<br><br>n.b. I'm not sure why this was needed but its one step I had to take to get the static website working<br><br>To export the static website I then went to the WP2Static tab and entered the followin<br><img class="wp-image-489" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled.png 1611w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-300x155.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1024x528.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-768x396.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1536x792.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/Untitled-1200x619.png 1200w" sizes="(max-width: 1611px) 100vw, 1611px"></pre>
-<p>Create the S3 bucket</p>
-<pre class="wp-block-verse">Create the S3 bucket for your website, in this case isitdevops.com<br>Ensure the bucket policy allows all access.<br><img class="wp-image-491" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-300x88.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1024x300.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-768x225.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1536x450.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-2048x600.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-2-1200x352.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
-<p>Upload the website files</p>
-<pre class="wp-block-verse">Move into the bucket and select Upload<br><img class="wp-image-493" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4.png 1972w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-300x108.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1024x367.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-768x275.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1536x551.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-4-1200x430.png 1200w" sizes="(max-width: 1972px) 100vw, 1972px"><br>Drag/Drop the files, select Next, Select Grant Public Read Access and then Upload. <br><img class="wp-image-494" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-300x178.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1024x607.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-768x455.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1536x910.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-2048x1213.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-5-1200x711.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-495" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-300x180.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1024x614.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-768x461.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1536x922.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-2048x1229.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-6-1200x720.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-496" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-300x176.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1024x600.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-768x450.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1536x900.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-2048x1200.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-7-1200x703.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"><br><img class="wp-image-497" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-scaled.png 2560w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-300x179.png 300w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1024x610.png 1024w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-768x458.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1536x916.png 1536w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-2048x1221.png 2048w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-8-1200x715.png 1200w" sizes="(max-width: 2560px) 100vw, 2560px"></pre>
-<p>Kick off the website</p>
-<pre class="wp-block-verse">Go to the bucket properties page and select the "Static Website Hosting"tab. <br><img class="wp-image-492" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-3-e1575454919117.png" alt=""><br><img class="wp-image-498" style="width: 900px;" src="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png" alt="" srcset="http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9.png 1246w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-267x300.png 267w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-911x1024.png 911w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-768x864.png 768w, http://devops.isitdevops.com/wp-content/uploads/2019/12/S3-9-1200x1349.png 1200w" sizes="(max-width: 1246px) 100vw, 1246px"><br>Enter index.html as the index document<br>Save the endpoint displayed in the popup.<br>Select Save.<br>Test the website using the endpointas the web address.</pre>
-</p>
-</div>
-]]></content:encoded>
 					
 		
 		
