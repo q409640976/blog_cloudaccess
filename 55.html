@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><title>The simplest CI setup ever | fast ok</title><link rel="stylesheet" type="text/css" media="all" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one-pro/style.css"><style type="text/css">
+
+<!--Theme color-->
+	.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    background: #00A1E0;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu ul {
+    background: none repeat scroll 0 0 #F3F3F3;
+    border-bottom: 5px solid #00A1E0;
+    }		
+.themonic-nav li a:hover {
+	background: #00A1E0;
+}
+.themonic-nav li:hover {
+	background: #00A1E0;
+}
+.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    color: ;
+    font-weight: bold;
+}
+.themonic-nav li a:hover {
+	color: ;
+}
+.categories a {
+    background:#00A1E0;
+}
+.read-more a {
+					color: #00A1E0;
+}
+.featured-post {
+    color: #00A1E0;
+}
+#emailsubmit {
+    background: #00A1E0;
+}
+#searchsubmit {
+    background: #00A1E0;
+}
+.themonic-nav .current-menu-item a, .themonic-nav .current-menu-ancestor a, .themonic-nav .current_page_item a, .themonic-nav .current_page_ancestor a {
+    background: #00A1E0;
+}
+.comments-area article {
+    border-color: #E1E1E1 #E1E1E1 #00A1E0;
+}
+@media screen and (max-width: 767px) {
+.themonic-nav ul.nav-menu, .themonic-nav div.nav-menu > ul, .themonic-nav li {
+    border-bottom: none;
+    }
+}
+		</style><link rel="dns-prefetch" href="//fonts.googleapis.com"><link rel="dns-prefetch" href="//s.w.org"><link rel="stylesheet" id="wp-block-library-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="themonic-fonts-css" href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,latin-ext" type="text/css" media="all"><link rel="stylesheet" id="custom-style-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one-pro/custom.css?ver=5.4.1" type="text/css" media="all"><link rel="stylesheet" id="fontawesome-css-css" href="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one-pro/font/font-awesome.min.css?ver=5.4.1" type="text/css" media="all"><script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one-pro/js/respond.min.js?ver=5.4.1"></script></head><body class="post-template-default single single-post postid-55 single-format-standard custom-font-enabled single-author">
+	
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner"><hgroup><a href="https://liming.imfast.io/" title="fast ok" rel="home">fast ok</a>
+				<br ...><a class="site-description">one month</a>
+		</hgroup><nav id="site-navigation" class="themonic-nav" role="navigation"><a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div id="menu-top" class="nav-menu"><ul><li><a href="https://liming.imfast.io/">首页</a></li></ul></div>
+		</nav><div class="clear"></div>
+	</header><div id="main" class="wrapper">
+			<div id="primary" class="site-content">
+				<div id="content" role="main">
+
+			
+					<article id="post-55" class="post-55 post type-post status-publish format-standard hentry category-uncategorized"><header class="entry-header"><h1 class="entry-title">The simplest CI setup ever</h1>
+									
+	<div class="clear"></div>
+	<div class="below-title-meta">
+		<div class="adt">
+		By        <span class="vcard author">
+         <span class="fn"><a href="https://liming.imfast.io/author/apvffqbd" title="由admin发布" rel="author">admin</a></span>
+        </span>
+         <span class="meta-sep">|</span> 
+         <span class="date updated">
+			2020-05-02		 </span>		 
+         </div>
+		 <div class="adt-comment">
+		<span><a class="link-comments" href="https://liming.imfast.io/55.html#respond">0 Comment</a></span> 
+         </div>       
+     </div>
+	<div class="clear"></div>		
+						</header><div class="entry-content">
+							<div>
+<p>This weekend I started to go back an look at a few projects of mine. A few years ago I setup most of those using a mix of Travis CI for building/testing, docker hub for image building/hosting and then somehow wiring this all together with a custom stack. Today this feels outdated and overly complex. As an <a href="https://landing.google.com/sre/workbook/chapters/simplicity/">SRE I’m allergic to complexity</a>. So I spent a few hours checking out the new Github <a href="https://github.com/features/packages">packages</a> and <a href="https://github.com/features/actions">actions</a>. </p>
+<h2>Pricing</h2>
+<p>Both packages and actions come with a unlimited option for open source projects and a nice free tier for private repositories. For actions you get 2000 build minutes per month. For packages 500MB in storage is included. There is more fine print for data transfer but that seems really generous and will mostly suffice for any small to medium size project. (Don’t mine bitcoin in the Github actions runner please :-D)</p>
+<h2>Setup</h2>
+<p>Github has a somewhat unfair advantage here: their stuff is build right into the UI. But that is exactly why its nice. Github has been amazing at creating clear and understandable user interfaces. Compare to the mess that docker hub is, I can only applaud them for a job well done.</p>
+<figure class="wp-block-image size-large"><a href="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09.png"><img src="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09-1024x485.png" alt="" class="wp-image-970" srcset="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09-1024x485.png 1024w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09-300x142.png 300w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09-768x364.png 768w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-09.png 1235w" sizes="(max-width: 1024px) 100vw, 1024px"></a><figcaption>The docker registry neatly integrates with the rest of the interface. It provides the most needed information right away.</figcaption></figure><p>To get started, there is nothing else to do, than write a simple workflow file. If you already have your docker file setup, this can be enabled within 2 minutes. For my CalendarProxy project (written in PHP) I actually created two separate workflows. One for any pull requests to master and one for actual commits on master. First lets take a look at the build file for the pull requests:</p>
+<pre class="wp-block-code"><code class="">name: CI
+on:
+  pull_request:
+    branches: master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest
+    - name: Run test suite
+      run: composer test</code></pre>
+<p>The <code>on pull_request</code> section is the part when this code should trigger. So any time a pull request is targeting the master branch it runs all the jobs defined below. Jobs usually run in parallel and execute independently. This is nice to speed up your build times and run checks faster.</p>
+<p>Inside the <code>jobs</code> section we can see the <code>test</code> section, which is just the name of that particular build step. <code>runs-on</code> specifies which host system os to use. This shouldn’t really matter in most cases, but <a href="https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on">Github offers Ubuntu, macOS and Windows</a>. This is somewhat amazing, as in the past getting macOS runners for TravisCI was not part of the free plan. So building iOS apps was not possible. How can all of this be free? Amazing!</p>
+<p>The <code>steps</code> sections defines individual commands for this build. Its very similar to what we all already know from other CI configurations. There is one difference though which just amazes me: the <code>uses</code> keyword. This is kind of a plugin architecture, where you can reuse build steps that might be more complex. The <code>actions/checkout@v2</code> step is basically a “update the repo with the version that we currently want to test” build instruction. Check <a href="https://github.com/actions/checkout">out the full source code of the action here</a>.</p>
+<p>I remember this to be a much more involved thing previously, where you would get a tag/branch name and would manually somehow construct the right git command to get the right repo setup. These actions are a superbly good selling point, as it makes it way easier to build complex pipelines quickly. Bitbucket <a href="https://bitbucket.org/product/features/pipelines/integrations">pipelines have something similar called pipes</a> but when I tried them about a year ago it felt much more complex to configure them correctly.</p>
+<p>The rest of the above steps install dependencies, do some basic validation and run the test suite. That is enough to reason, if there are any breaking changes hopefully.</p>
+<p>The other workflow I have configured gets triggered, whenever there is a push / merge onto the master branch:</p>
+<pre class="wp-block-code"><code class="">name: CI
+on:
+  push:
+    branches: master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v1
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1.1.0
+      with:
+        username: ${{ github.actor }}
+        password: ${{ github.token }}
+        registry: docker.pkg.github.com
+        repository: tum-dev/calendarproxy/server
+        tags: latest
+        tag_with_ref: true
+        tag_with_sha: true
+        add_git_labels: true</code></pre>
+<p>Here I use the <code>docker/build-push-action@v1.1.0</code> action to do all the steps to build and publish the docker image. Again,<a href="https://github.com/docker/build-push-action"> the action is separate code configured</a> here. Take a look, cause its ridiculously easy to create such actions. The action has a few nice parameters that you <a href="https://github.com/marketplace/actions/build-and-push-docker-images">can read about here</a>.</p>
+<figure class="wp-block-image size-large"><a href="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30.png"><img src="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30-1024x445.png" alt="" class="wp-image-972" srcset="https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30-1024x445.png 1024w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30-300x130.png 300w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30-768x334.png 768w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30-1536x667.png 1536w,https://bruck.me/wp-content/uploads/2020/05/Screenshot-from-2020-05-02-01-03-30.png 1872w" sizes="(max-width: 1024px) 100vw, 1024px"></a><figcaption>Github automatically triggers all build jobs on the configured events. The logs are neatly provided and have useful features like auto scroll and folding when complete.</figcaption></figure><p>One thing that amazed me here: using the default provided env variables in the <code>github</code> array we don’t need anything else to push to the Github integrated docker repository. No secrets to configure, no nothing. Its that easy.</p>
+<h2>Outlook</h2>
+<p>I think Microsoft and Github are doing a great job. The vendor lock in here is getting super strong and not labeling anything here Azure is a good idea to keep away people that dislike it or had bad experiences. These actions and the integrated docker repository make it absolutely easy to do basic CI.</p>
+<p>At this point in time there is no excuse to not use such setups for your systems. Anyone still doing <code>git pull</code> in a random webserver folder should go ahead and automate their work right away. Don’t be lazy, instead go crazy with automation. </p>
+<p>I’m interested in how we can make this even simpler. Especially the story around continues deployment and spinning up an environment for each pull request is still something that seems overly complex. I’d hope we figure out better solutions for this in the future. (No I shouldn’t be required to use kubernetes for this)</p>
+</div>
+					</div>
+	
+			
+						<div class="themonic-social-share">
+			<ul></ul><div class="clear"></div>
+			</div>
+					<footer class="entry-meta"><div class="categories"><a href="https://liming.imfast.io/category/uncategorized" rel="category tag">默认分类</a></div> <div class="tags"></div> 
+				
+			
+			
+			
+		<div class="clear"></div>
+					</footer></article><div class="relatedposts"><p>Related Posts</p><ul><li>
+								<div class="relatedcontent">
+					<a href="https://liming.imfast.io/57.html" rel="bookmark" title="免费自助申请 Microsoft 365 A3（包含Office桌面版等福利）">免费自助申请 Microsoft 365 A3（包含Office桌面版等福利）</a>
+				</div>
+			
+			</li>
+		
+			<li>
+								<div class="relatedcontent">
+					<a href="https://liming.imfast.io/56.html" rel="bookmark" title="利用 CloudFlare Workers 搭建 Google 云端硬盘索引网盘">利用 CloudFlare Workers 搭建 Google 云端硬盘索引网盘</a>
+				</div>
+			
+			</li>
+		
+			<li>
+								<div class="relatedcontent">
+					<a href="https://liming.imfast.io/54.html" rel="bookmark" title="苹果CMS添加如优图床扩展 ( 支持10+图床 )">苹果CMS添加如优图床扩展 ( 支持10+图床 )</a>
+				</div>
+			
+			</li>
+		
+			<li>
+								<div class="relatedcontent">
+					<a href="https://liming.imfast.io/50.html" rel="bookmark" title="Centos 7 快速安装 Cloudflare RailGun 教程">Centos 7 快速安装 Cloudflare RailGun 教程</a>
+				</div>
+			
+			</li>
+		</ul></div>							
+				<nav class="nav-single"><div class="assistive-text">Post navigation</div>
+					<span class="nav-previous"><a href="https://liming.imfast.io/50.html" rel="prev"><span class="meta-nav">←</span> Centos 7 快速安装 Cloudflare RailGun 教程</a></span>
+					<span class="nav-next"><a href="https://liming.imfast.io/54.html" rel="next">苹果CMS添加如优图床扩展 ( 支持10+图床 ) <span class="meta-nav">→</span></a></span>
+				</nav><div id="comments" class="comments-area">
+
+	
+	
+	
+</div>
+			
+		</div>
+	</div>
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+					<aside id="recent-posts-2" class="widget widget_recent_entries"><p class="widget-title">近期文章</p>		<ul><li>
+					<a href="https://liming.imfast.io/57.html">免费自助申请 Microsoft 365 A3（包含Office桌面版等福利）</a>
+											<span class="post-date">2020-05-05</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/56.html">利用 CloudFlare Workers 搭建 Google 云端硬盘索引网盘</a>
+											<span class="post-date">2020-05-03</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/54.html">苹果CMS添加如优图床扩展 ( 支持10+图床 )</a>
+											<span class="post-date">2020-05-02</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/55.html" aria-current="page">The simplest CI setup ever</a>
+											<span class="post-date">2020-05-02</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/50.html">Centos 7 快速安装 Cloudflare RailGun 教程</a>
+											<span class="post-date">2020-05-01</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/39.html">WordPress web converted to flat file S3 – Part 2</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+											<li>
+					<a href="https://liming.imfast.io/38.html">WordPress web converted to flat file S3 – Part 1</a>
+											<span class="post-date">2020-04-29</span>
+									</li>
+					</ul></aside><aside id="categories-5" class="widget widget_categories"><p class="widget-title">分类目录</p>		<ul><li class="cat-item cat-item-1"><a href="https://liming.imfast.io/category/uncategorized">默认分类</a> (35)
+</li>
+		</ul></aside><aside id="archives-2" class="widget widget_archive"><p class="widget-title">文章归档</p>		<ul><li><a href="https://liming.imfast.io/date/2020/05">2020年五月</a> (5)</li>
+	<li><a href="https://liming.imfast.io/date/2020/04">2020年四月</a> (30)</li>
+		</ul></aside></div>
+		</div>
+			
+
+		<div class="site-wordpress">
+				        					<a href="http://themonic.com/iconic-one-pro/">Iconic One</a> Theme
+					
+									
+				
+				</div>
+				<div class="clear"></div>
+				
+		</div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/q409640976/blog_cloudaccess/wp-content/themes/iconic-one-pro/js/selectnav.js?ver=1.0"></script></body></html>
